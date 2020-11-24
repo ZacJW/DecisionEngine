@@ -1,0 +1,241 @@
+@startuml DecisionEngine
+package DecisionEngine {
+    package GameObject{
+        class GameObject {
+            float position_X
+            float position_Y
+            float rotation
+            GameObject parent
+            Collision hitbox
+            StateMap[] maps
+            bool visibility
+        }
+
+        class SpriteObject {
+            Texture texture
+            size
+        }
+
+        class MeshObject {
+            Texture[] textures
+        }
+    
+        class Camera {
+
+        }
+
+        note top of GameObject
+        GameObject position and rotation
+        is relative to parent, or global
+        if parent is null
+        end note
+    }
+
+    package UI {
+        class Element {
+
+        }
+
+        class TextElement {
+
+        }
+
+        class GraphicElement {
+
+        }
+
+        class ImageElement {
+
+        }
+
+        class RenderElement {
+
+        }
+    }
+
+    package Texture {
+        abstract Texture {
+            
+        }
+
+        class CameraTexture {
+            Camera camera
+        }
+
+        class ImageTexture {
+
+        }
+    }
+
+    abstract Collision {
+
+        bool isColliding(Collision)
+    }
+
+    package StateMap{
+        class StateMap {
+            StateNode current_node
+            StateNode[] nodes
+        }
+
+        class StateNode {
+            StateMap map
+            id
+            StateLink[] links
+            Behaviour[] behaviours
+        }
+
+        class StateLink {
+            BaseGameEvent event
+            StateNode to
+            StateNode from
+        }
+
+        interface Behaviour{
+            {abstract} void run()
+        }
+    }
+
+    package Listener{
+
+        class ListenedVar < T > {
+            ListenPoint listenpoint
+            T get()
+            set(T var)
+            ListenPoint getListenPoint()
+        }
+
+        class ListenPoint < T > {
+            ListenedVar<T> var
+            BaseGameEvent[] listeners
+            T get()
+            void register(BaseGameEvent)
+            void unregister(BaseGameEvent)
+        }
+
+    }
+    class Momentary {
+        {static} Momentary[] vars
+        {static} void resetAll()
+        void set()
+        void reset()
+    }
+
+    package Event {
+
+        abstract BaseGameEvent {
+            StateLink[] links
+            BaseGameEvent[] listeners
+            bool check()
+            void trigger()
+        }
+
+        abstract GameEvent {
+            ListenedVar<bool> state
+            void trigger()
+        }
+
+        abstract CountedGameEvent {
+            ListenedVar<int> count
+            void trigger()
+        }
+
+        abstract MomentaryGameEvent {
+            Momentary state
+            void trigger()
+        }
+
+        abstract TimerGameEvent{
+
+        }
+    }
+    package Core {
+        class WindowProperties {
+
+        }
+
+        class RenderLayer {
+            GameObject[] gameObjects
+            Camera camera
+        }
+
+        class ControlConfig {
+            
+        }
+
+        class World {
+            GameObject[] gameObjects
+            BaseGameEvent[] checkEvents
+            WindowProperties windowProperties
+            RenderLayer[] renderLayers
+            ControlConfig controlConfig
+
+            void registerGameObject(GameObject)
+            void unregisterGameObject(GameObject)
+
+            void setWindowProperties()
+            WindowProperties getWindowProperties()
+            int mainloop()
+        }
+    }
+    GameObject o--* GameObject : Parent/Child
+    note on link
+    A GameObject can parent multiple children,
+    but each child only has one parent
+    end note
+
+    GameObject *-- "1" Collision : hitbox
+    GameObject o-- StateMap : maps
+    GameObject *-- ListenedVar
+
+    SpriteObject --|> GameObject
+    SpriteObject *-- Texture
+
+    MeshObject --|> GameObject
+    MeshObject o-- Texture
+
+    CameraTexture -|> Texture
+    CameraTexture *-- Camera : camera
+
+    ImageTexture -|> Texture
+
+    Camera --|> GameObject
+
+    StateMap *-- StateNode : current_node
+    StateMap o-- StateNode : nodes
+
+    StateNode *-- StateMap : map
+    StateNode o-- StateLink : links
+    StateNode o-- Behaviour : behaviours
+
+    StateLink *-- StateNode : to / from
+    StateLink *-- BaseGameEvent : event
+
+
+    ListenedVar *-- ListenPoint : listenpoint
+    ListenPoint o-- BaseGameEvent
+
+    BaseGameEvent o--* BaseGameEvent
+    BaseGameEvent o-- StateLink : links
+    BaseGameEvent *-- ListenPoint
+
+    GameEvent --|> BaseGameEvent
+    GameEvent *-- ListenedVar : state
+
+    CountedGameEvent --|> BaseGameEvent
+    CountedGameEvent *-- ListenedVar : count
+
+    MomentaryGameEvent --|> BaseGameEvent
+    MomentaryGameEvent *-- Momentary : state
+
+    TimerGameEvent --|> GameEvent
+
+    TextElement -down-|> Element
+
+    GraphicElement -left-|> Element
+
+    RenderElement -down-|> GraphicElement
+
+    ImageElement -down-|> GraphicElement
+}
+@enduml

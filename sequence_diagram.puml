@@ -1,0 +1,54 @@
+@startuml DecisionEngine Sequence Diagram
+
+title Game Engine core loop
+
+actor User
+participant World
+participant  GameObject
+participant StateMap
+participant StateNode
+participant StateLink
+participant ListenedVar
+participant BaseGameEvent
+
+== Start of loop ==
+
+== Input ==
+
+World -> User : Get input
+User -> World : Give input
+
+== Behaviours ==
+
+World -> GameObject : Execute behaviours
+activate GameObject
+GameObject -> StateMap : Execute behaviour
+activate StateMap
+StateMap -> StateNode : Execute behaviour
+activate StateNode
+StateNode -> GameObject : Execute behaviour methods
+activate GameObject
+GameObject -> ListenedVar : Updated ListenedVar
+activate ListenedVar
+ListenedVar --> World : Register event check
+return Updated
+return Done
+return Done
+return Done
+return Done
+
+
+== Render ==
+
+== Events ==
+
+World -> BaseGameEvent : Check event
+BaseGameEvent -> StateLink : Update state
+StateLink -> StateNode : Update state
+StateNode -> StateMap : Update state
+
+== Reset ==
+
+== End of loop ==
+
+@enduml

@@ -1,4 +1,4 @@
-@startuml DecisionEngine
+@startuml DecisionEngine Class Diagram
 package DecisionEngine {
     package GameObject{
         class GameObject {
@@ -21,7 +21,8 @@ package DecisionEngine {
         }
     
         class Camera {
-
+            float vFov
+            float hFov
         }
 
         note top of GameObject
@@ -33,6 +34,15 @@ package DecisionEngine {
 
     package UI {
         class Element {
+            int position_X
+            int position_Y
+            bool clickable
+            bool hoverable
+
+
+            {abstract} void onClick()
+            {abstract} void onHoverStart()
+            {abstract} void onHoverStop()
 
         }
 
@@ -78,21 +88,17 @@ package DecisionEngine {
             StateNode[] nodes
         }
 
-        class StateNode {
+        abstract StateNode {
             StateMap map
             id
             StateLink[] links
-            Behaviour[] behaviours
+            {abstract} void behaviour()
         }
 
         class StateLink {
             BaseGameEvent event
             StateNode to
             StateNode from
-        }
-
-        interface Behaviour{
-            {abstract} void run()
         }
     }
 
@@ -206,7 +212,6 @@ package DecisionEngine {
 
     StateNode *-- StateMap : map
     StateNode o-- StateLink : links
-    StateNode o-- Behaviour : behaviours
 
     StateLink *-- StateNode : to / from
     StateLink *-- BaseGameEvent : event
@@ -237,5 +242,10 @@ package DecisionEngine {
     RenderElement -down-|> GraphicElement
 
     ImageElement -down-|> GraphicElement
+
+    World *-- WindowProperties
+    World *-- ControlConfig
+    World o-- RenderLayer
+    
 }
 @enduml

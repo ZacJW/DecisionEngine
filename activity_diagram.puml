@@ -1,0 +1,75 @@
+@startuml DecisionEngine Activity Diagram
+start
+partition Initialse {
+    :Instance World;
+    :Register Window, Render
+    and Control config;
+    :Instance GameObjects;
+    :Insance and connect StateMaps,
+    Nodes, Links and Events;
+    :Register GameObjects on World;
+    :Initialse World;
+    :Begin World mainloop;
+}
+while (Stop?) is (continue)
+    partition Input {
+        :Update Control with
+        new user input;
+    }
+    partition Behaviours {
+        :Allocate GameObjects 
+        to seperate threads;
+        fork
+            while (for each GameObject)
+                while (for each StateMap)
+                    :Get current node;
+                    :Call behaviour method;
+                    :Do behaviour;
+                    :Register event checks;
+                endwhile (done)
+            endwhile (done)
+        end fork
+    }
+    partition Render {
+        :Push GameObject data to GPU;
+        :Render;
+        :Composite layers together;
+        :Flip buffer;
+    }
+    partition Events {
+        while (unchecked events)
+            :Allocate Events
+            to seperate threads;
+            fork
+                while (for each Event)
+                    :Check event condition;
+                    if (condition) then (true)
+                        :Register meta-event checks;
+                        while (for each link)
+                            if (link is from active node?) then (yes)
+                                :Register state updates;
+                            endif
+                        endwhile
+                    endif
+                endwhile
+            end fork
+        endwhile
+    }
+    partition States {
+        :Allocate StateMaps
+        to seperate threads;
+        fork
+            while (for each StateMap)
+                :update active node
+                according to link with
+                highest priority;
+            endwhile
+        end fork
+    }
+    partition Reset {
+        :Reset all momentaries;
+    }
+endwhile (stop)
+stop
+
+@enduml

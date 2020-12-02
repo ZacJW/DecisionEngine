@@ -1,27 +1,23 @@
 package DecisionEngine.GameObject;
 
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.concurrent.Callable;
 
 import DecisionEngine.Core.World;
-import DecisionEngine.Event.GameEventInterface;
 
-public class GameObject implements Callable<Set<GameEventInterface>> {
-    ArrayList<StateMap> maps;
+public class GameObject implements GameObjectInterface {
+    ArrayList<StateMapInterface> maps;
     World world;
 
     public GameObject() {
         
     }
 
-    public Set<GameEventInterface> call(){
-        world.resetEventCheckSet();
-
-        for (StateMap map : this.maps){
-            map.activeNode.behaviour();
+    public ArrayList<StateMapInterface> getStateMaps(){
+        return maps;
+    }
+    public void run(){
+        for (StateMapInterface map : maps){
+            map.getActiveNode().behaviour();
         }
-
-        return world.getEventCheckSet();
     }
 }

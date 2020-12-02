@@ -37,5 +37,8 @@ class TestEvent implements GameEventDataInterface<String> {
     public void updateState(StateNodeDataInterface<String> node){
 
     }
+    public void run(){
+        
+    }
 
 }

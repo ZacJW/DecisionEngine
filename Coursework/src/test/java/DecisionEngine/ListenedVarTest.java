@@ -8,7 +8,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import DecisionEngine.Core.EventCaptureInterface;
-import DecisionEngine.Core.LocalEventSet;
+import DecisionEngine.Core.EventCaptureSyncSet;
 import DecisionEngine.Event.GameEventInterface;
 import DecisionEngine.GameObject.StateLinkInterface;
 import DecisionEngine.Listener.ListenPoint;
@@ -17,7 +17,7 @@ import DecisionEngine.Listener.ListenedVar;
 public class ListenedVarTest {
     @Test
     public void listenedVarEventCheckTest(){
-        EventCapture ec = new EventCapture();
+        EventCaptureInterface ec = new EventCaptureSyncSet();
         ListenedVar<String> var = new ListenedVar<String>(ec, "Hello");
         ListenPoint<String> lp = var.getListenPoint();
         TestEvent event = new TestEvent(lp);
@@ -25,27 +25,11 @@ public class ListenedVarTest {
         var.set("World");
         Set<GameEventInterface> testSet = new HashSet<GameEventInterface>();
         testSet.add(event);
-        assertTrue(ec.getEventCheckSet().equals(testSet));
-    }
-}
-
-class EventCapture implements EventCaptureInterface {
-    LocalEventSet eventCheckSetLocal;
-
-    EventCapture(){
-        eventCheckSetLocal = new LocalEventSet();
-    }
-
-    public Set<GameEventInterface> getEventCheckSet(){
-        return eventCheckSetLocal.get();
-    }
-
-    public void resetEventCheckSet(){
-        eventCheckSetLocal.set(new HashSet<GameEventInterface>());
-    }
-
-    public void registerEventChecks(Set<GameEventInterface> events){
-        eventCheckSetLocal.get().addAll(events);
+        HashSet<GameEventInterface> resultSet = new HashSet<GameEventInterface>();
+        for (GameEventInterface resultEvent : ec){
+            resultSet.add(resultEvent);
+        }
+        assertTrue(resultSet.equals(testSet));
     }
 }
 
@@ -73,5 +57,9 @@ class TestEvent implements GameEventInterface {
     public void trigger(){
         triggered = true;
         captureVar = lp.get();
+    }
+
+    public void run(){
+
     }
 }

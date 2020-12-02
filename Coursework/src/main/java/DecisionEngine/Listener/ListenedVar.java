@@ -3,12 +3,12 @@ package DecisionEngine.Listener;
 import DecisionEngine.Core.EventCaptureInterface;
 
 public class ListenedVar<T> {
-    EventCaptureInterface world;
+    EventCaptureInterface eventCapture;
     ListenPoint<T> listenPoint;
     T var;
 
-    public ListenedVar(EventCaptureInterface world, T var) {
-        this.world = world;
+    public ListenedVar(EventCaptureInterface eventCapture, T var) {
+        this.eventCapture = eventCapture;
         this.var = var;
         listenPoint = new ListenPoint<T>(this);
     }
@@ -19,7 +19,7 @@ public class ListenedVar<T> {
 
     public void set(T var){
         this.var = var;
-        world.registerEventChecks(listenPoint.listeners);
+        eventCapture.add(listenPoint.listeners);
     }
 
     public ListenPoint<T> getListenPoint(){

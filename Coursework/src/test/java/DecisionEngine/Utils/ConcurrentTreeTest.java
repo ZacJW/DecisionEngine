@@ -18,7 +18,7 @@ public class ConcurrentTreeTest {
         tree.add(5);
         tree.add(4);
         String out = treeToSet(tree).toString();
-        assertEquals("Output: " + out + " is not as expected", out, "1, 2, 3, 4, 5, ");
+        assertEquals("Output: " + out + " is not as expected", out, "[1, 2, 3, 4, 5]");
     }
 
     @Test

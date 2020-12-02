@@ -1,53 +1,68 @@
 package DecisionEngine.Core;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import DecisionEngine.Event.GameEventInterface;
-import DecisionEngine.GameObject.GameObject;
+import DecisionEngine.GameObject.GameObjectInterface;
+import DecisionEngine.GameObject.StateNodeInterface;
 
-public abstract class World implements EventCaptureInterface {
+public abstract class World {
     //ArrayList<GameObject> gameObjects;
-    Set<GameObject> gameObjects;
-    LocalEventSet eventCheckSetLocal;
-    Set<GameEventInterface> eventCheckSet;
+    Set<GameObjectInterface> gameObjects;
+    EventCaptureInterface uncheckedEvents;
+    StateUpdateInterface pendingStates;
 
     public World() {
-        gameObjects = new HashSet<GameObject>();
-        eventCheckSetLocal = new LocalEventSet();
-        eventCheckSet = new HashSet<GameEventInterface>();
+        gameObjects = new HashSet<GameObjectInterface>();
+        uncheckedEvents = new EventCaptureSyncSet();
+        pendingStates = new StateUpdateSyncMap();
     }
 
-    public Set<GameEventInterface> getEventCheckSet(){
-        return eventCheckSetLocal.get();
-    }
-
-    public void resetEventCheckSet(){
-        eventCheckSetLocal.set(new HashSet<GameEventInterface>());
-    }
-
-    public void registerEventChecks(Set<GameEventInterface> events){
-        eventCheckSetLocal.get().addAll(events);
+    public EventCaptureInterface getEventCapture(){
+        return uncheckedEvents;
     }
 
     protected void processBehaviours(){
-        GameObject[] gameObjectArray = (GameObject[]) gameObjects.toArray();
-        ArrayList<Future<Set<GameEventInterface>>> results = new ArrayList<Future<Set<GameEventInterface>>>(gameObjects.size());
+        uncheckedEvents.reset();
         ExecutorService pool = Executors.newCachedThreadPool();
-        for (int i = 0; i < gameObjectArray.length; i++){
-            results.set(i, pool.submit(gameObjectArray[i]));
+        for (GameObjectInterface gameObject : gameObjects){
+            pool.execute(gameObject);
         }
-        for (Future<Set<GameEventInterface>> result : results){
-            try{
-                eventCheckSet.addAll(result.get());
-            }catch (InterruptedException | ExecutionException e){
+        pool.shutdown();
+        try{
+            pool.awaitTermination(1, TimeUnit.SECONDS);
+        }catch (InterruptedException e){
 
-            }
+        }
+    }
+
+    protected void processEvents(){
+        ExecutorService pool = Executors.newCachedThreadPool();
+        for (GameEventInterface event : uncheckedEvents){
+            pool.submit(event);
+        }
+        pool.shutdown();
+        try{
+            pool.awaitTermination(1, TimeUnit.SECONDS);
+        }catch (InterruptedException e){
+
+        }
+    }
+
+    protected void updateStates(){
+        ExecutorService pool = Executors.newCachedThreadPool();
+        for (StateNodeInterface node : pendingStates){
+            //pool.submit(task);
+        }
+        pool.shutdown();
+        try{
+            pool.awaitTermination(1, TimeUnit.SECONDS);
+        }catch (InterruptedException e){
+
         }
     }
 }

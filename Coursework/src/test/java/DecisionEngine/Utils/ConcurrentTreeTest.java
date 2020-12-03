@@ -36,6 +36,20 @@ public class ConcurrentTreeTest {
         assertTrue("", out.contains(arr1[0]));
     }
 
+    @Test
+    public void clearTest(){
+        ConcurrentTree<Integer> tree = new ConcurrentTree<Integer>();
+        tree.add(2);
+        tree.add(1);
+        Set<Integer> actual = treeToSet(tree);
+        Set<Integer> expected = new HashSet<Integer>();
+        expected.add(1);
+        expected.add(2);
+        assertEquals(expected, actual);
+        tree.clear();
+        assertEquals(new HashSet<Integer>(), treeToSet(tree));
+    }
+
     static <T> Set<T> treeToSet(ConcurrentTree<T> tree){
         Set<T> set = new HashSet<T>();
         for (T data : tree){

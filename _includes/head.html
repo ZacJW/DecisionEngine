@@ -1,0 +1,14 @@
+<head>
+    <meta charset="utf-8">
+    <title>DecisionEngine</title>
+    <meta name="description" content="DecisionEngine website.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/img/favicon.png">
+    {% if page.stylesheet %}
+    {% for stylesheet in page.stylesheet %}
+    <link rel="stylesheet" href="{{ stylesheet }}">
+    {% endfor %}
+    {% else %}
+    <link rel="stylesheet" href="/css/style.css">
+    {% endif %}
+</head>

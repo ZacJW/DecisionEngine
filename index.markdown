@@ -4,3 +4,5 @@
 
 layout: home
 ---
+
+[Release Documentation](/release-docs/index.html)

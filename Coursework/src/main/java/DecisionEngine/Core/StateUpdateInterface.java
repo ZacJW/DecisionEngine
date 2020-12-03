@@ -13,6 +13,7 @@ public interface StateUpdateInterface extends Iterable<StateNodeInterface> {
      * Captures a state node and state link to be updated at the next state update step
      * If node is already captured, the priority of the existing link and new link are
      * compared, and the higer priority link is kept in the capture.
+     * 
      * @param node The currently active StateNodeInterface with a triggered link
      * @param link The triggered StateLinkInterface from node
      */

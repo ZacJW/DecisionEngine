@@ -22,8 +22,8 @@ title: DecisionEngine
 email: up947563@myport.ac.uk
 description: >- # this means to ignore newlines until "baseurl:"
   An event driven, finite state machine based Java game engine
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/DecisionEngine" # the subpath of your site, e.g. /blog
+url: "https://zacjw.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 theme: minima

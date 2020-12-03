@@ -15,14 +15,16 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - run: javadoc -subpackages DecisionEngine -sourcepath ./Coursework/src/main/java/ -d /javadoc
+    - run: mkdir /tmp/javadoc-build-copy
+    - run: javadoc -subpackages DecisionEngine -sourcepath ./Coursework/src/main/java/ -d /tmp/javadoc-build-copy
     - uses: actions/checkout@v2
       with:
         ref: pages
     - run: rm -rf ./release-docs/
-    - run: cp /javadoc ./release-docs
+    - run: cp -r /tmp/javadoc-build-copy ./release-docs
     - uses: EndBug/add-and-commit@v5
       with:
         add: ./release-docs/
         message: Regenerated release-docs
+        branch: pages
 

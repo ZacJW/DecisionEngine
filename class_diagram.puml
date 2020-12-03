@@ -1,6 +1,9 @@
 @startuml DecisionEngine Class Diagram
 package DecisionEngine {
     package GameObject{
+        interface GameObjectInterface{
+            getStateMaps()
+        }
         class GameObject {
             float position_X
             float position_Y
@@ -83,6 +86,24 @@ package DecisionEngine {
     }
 
     package StateMap{
+        interface StateMapInterface{
+            getActiveNode()
+            getNodes()
+        }
+
+        interface StateNodeInterface{
+            getMap()
+            getLinks()
+            isActive()
+            behaviour()
+        }
+
+        interface StateLinkInterface{
+            getTo()
+            getFrom()
+            getEvent()
+        }
+
         class StateMap {
             StateNode current_node
             StateNode[] nodes
@@ -128,6 +149,13 @@ package DecisionEngine {
     }
 
     package Event {
+        interface GameEventInterface{
+            getLinks()
+            getListeners()
+            check()
+            trigger()
+            run()
+        }
 
         abstract BaseGameEvent {
             StateLink[] links

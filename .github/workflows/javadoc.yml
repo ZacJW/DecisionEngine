@@ -1,0 +1,28 @@
+name: Generate Javadoc
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  javadoc:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: main
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - run: javadoc -subpackages DecisionEngine -sourcepath ./Coursework/src/main/java/ -d /javadoc
+    - uses: actions/checkout@v2
+      with:
+        ref: pages
+    - run: rm -rf ./release-docs/
+    - run: cp /javadoc ./release-docs
+    - uses: EndBug/add-and-commit@v5
+      with:
+        add: ./release-docs/
+        message: Regenerated release-docs
+

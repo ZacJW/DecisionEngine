@@ -25,7 +25,7 @@ public class StateUpdateSyncMap implements StateUpdateInterface {
     }
     public static StateLinkInterface mergeLink(StateLinkInterface link1, StateLinkInterface link2){
         BiMap<Integer, StateLinkInterface> priorityMap = link1.getFrom().getLinks();
-        if (priorityMap.getKey(link1) < priorityMap.getKey(link2)){
+        if (priorityMap.getKey(link1) > priorityMap.getKey(link2)){
             return link1;
         }else{
             return link2;

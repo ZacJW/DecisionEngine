@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import DecisionEngine.Event.GameEventInterface;
 import DecisionEngine.GameObject.GameObjectInterface;
+import DecisionEngine.GameObject.StateNode;
 import DecisionEngine.GameObject.StateNodeInterface;
 
 public abstract class World {
@@ -56,7 +57,7 @@ public abstract class World {
     protected void updateStates(){
         ExecutorService pool = Executors.newCachedThreadPool();
         for (StateNodeInterface node : pendingStates){
-            //pool.submit(task);
+            pool.submit(pendingStates.getLink(node));
         }
         pool.shutdown();
         try{

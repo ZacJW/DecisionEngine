@@ -3,8 +3,8 @@ package DecisionEngine.GameObject;
 import DecisionEngine.Utils.BiMap;
 
 public abstract class StateNode implements StateNodeInterface {
-    StateMapInterface map;
-    BiMap<Integer, StateLinkInterface> links;
+    protected StateMapInterface map;
+    protected BiMap<Integer, StateLinkInterface> links;
     
     public StateNode(StateMapInterface map, BiMap<Integer, StateLinkInterface> links) throws NullPointerException {
         if (map == null){

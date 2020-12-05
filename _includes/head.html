@@ -6,9 +6,9 @@
     <link rel="icon" href="/img/favicon.png">
     {% if page.stylesheet %}
     {% for stylesheet in page.stylesheet %}
-    <link rel="stylesheet" href="{{ stylesheet }}">
+    <link rel="stylesheet" href="{{ site.baseurl | append: stylesheet }}">
     {% endfor %}
     {% else %}
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{ site.baseurl | append: '/css/style.css' }}">
     {% endif %}
 </head>

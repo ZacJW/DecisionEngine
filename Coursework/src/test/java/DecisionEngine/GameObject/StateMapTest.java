@@ -26,6 +26,15 @@ public class StateMapTest {
         assertTrue(node2.isActive());
         assertFalse(node1.isActive());
     }
+
+    @Test
+    public void getNodesTest(){
+        StateMap map = new StateMap();
+        for (int i=0; i<10; i++){
+            map.pushNode(new Node(map));
+        }
+        assertEquals(map.nodes.size(), 10);
+    }
 }
 
 class Node extends StateNode{

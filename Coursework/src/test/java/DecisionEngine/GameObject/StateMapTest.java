@@ -11,9 +11,9 @@ public class StateMapTest {
     @Test
     public void activeNodeTest() throws NullPointerException{
         StateMap map = new StateMap();
-        StateNode node1 = new Node(map);
+        StateNodeInterface node1 = new Node(map);
         map.pushNode(node1);
-        StateNode node2 = new Node(map);
+        StateNodeInterface node2 = new Node(map);
         map.pushNode(node2);
         map.setActiveNode(node1);
         assertEquals(map.getActiveNode(), node1);

@@ -31,4 +31,7 @@ public class StateUpdateSyncMap implements StateUpdateInterface {
             return link2;
         }
     }
+    public StateLinkInterface getLink(StateNodeInterface node){
+        return map.get(node);
+    }
 }

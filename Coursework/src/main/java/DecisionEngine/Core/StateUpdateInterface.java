@@ -19,6 +19,7 @@ public interface StateUpdateInterface extends Iterable<StateNodeInterface> {
      */
     public void add(StateNodeInterface node, StateLinkInterface link);
     public Iterator<StateNodeInterface> iterator();
+    public StateLinkInterface getLink(StateNodeInterface node);
     /**
      * Empties the state update capture
      */

@@ -1,12 +1,12 @@
 package DecisionEngine.GameObject;
 
-import java.util.ArrayList;
+import DecisionEngine.Utils.BiMap;
 
 public abstract class StateNode implements StateNodeInterface {
     StateMapInterface map;
-    ArrayList<StateLinkInterface> links;
+    BiMap<Integer, StateLinkInterface> links;
     
-    public StateNode(StateMapInterface map, ArrayList<StateLinkInterface> links) throws NullPointerException {
+    public StateNode(StateMapInterface map, BiMap<Integer, StateLinkInterface> links) throws NullPointerException {
         if (map == null){
             throw new NullPointerException("map cannot be null");
         }
@@ -19,7 +19,19 @@ public abstract class StateNode implements StateNodeInterface {
             throw new NullPointerException("map cannot be null");
         }
         this.map = map;
-        this.links = new ArrayList<StateLinkInterface>();
+        this.links = new BiMap<Integer, StateLinkInterface>();
+    }
+
+    public boolean isActive(){
+        return this == map.getActiveNode();
+    }
+
+    public BiMap<Integer, StateLinkInterface> getLinks(){
+        return links;
+    }
+
+    public StateMapInterface getMap(){
+        return map;
     }
 
     public abstract void behaviour();

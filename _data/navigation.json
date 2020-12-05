@@ -1,4 +1,5 @@
 [
     {"name": "Home", "link": "/"},
-    {"name": "Docs", "link": "/docs/"}
+    {"name": "Release Docs", "link": "/release-docs/index.html", "target": "_blank"},
+    {"name": "Development Docs", "link": "/development-docs/index.html", "target": "_blank"}
 ]

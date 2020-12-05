@@ -1,5 +1,5 @@
-<nav>
+<nav class="topbar">
     {% for item in site.data.navigation %}
-        {% if page.url == item.link %}<b>{% endif %}<a href="{% if page.url == item.link %}#{% else %}{{ item.link }}{% endif %}" {% if item.target %}target="{{ item.target }}"{% endif %}>{{ item.name }}</a>{% if page.url == item.link %}</b>{% endif %}
+        <a {% if page.url == item.link %}href="#" class="active"{% else %}href="{{ site.baseurl | append: item.link }}"{% endif %} {% if item.target %}target="{{ item.target }}"{% endif %}>{% if page.url == item.link %}<b>{% endif %}{{ item.name }}{% if page.url == item.link %}</b>{% endif %}</a>
     {% endfor %}
 </nav>

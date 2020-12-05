@@ -2,7 +2,9 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-layout: home
+layout: default
 ---
 
-[Release Documentation](/release-docs/index.html)
+# DecisionEngine
+
+A Java game engine built on [LWJGL](https://www.lwjgl.org/)

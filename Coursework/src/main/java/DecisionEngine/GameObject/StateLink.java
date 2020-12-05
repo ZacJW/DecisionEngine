@@ -1,21 +1,37 @@
 package DecisionEngine.GameObject;
 
-import DecisionEngine.Event.BaseGameEvent;
+import DecisionEngine.Event.GameEventInterface;
 
-public class StateLink {
-    BaseGameEvent event;
-    StateNode to;
-    StateNode from;
+public class StateLink implements StateLinkInterface {
+    GameEventInterface event;
+    StateNodeInterface to;
+    StateNodeInterface from;
 
-    public StateLink(StateNode to, StateNode from, BaseGameEvent event) throws NullPointerException {
-        if (to == null){
+    public StateLink(StateNodeInterface to, StateNodeInterface from, GameEventInterface event) throws NullPointerException {
+        if (to == null) {
             throw new NullPointerException("to cannot be null");
         }
-        if (from == null){
+        if (from == null) {
             throw new NullPointerException("from cannot be null");
         }
         this.to = to;
         this.from = from;
         this.event = event;
+    }
+
+    public void run() {
+        to.getMap().setActiveNode(to);
+    }
+
+    public StateNodeInterface getTo() {
+        return to;
+    }
+
+    public StateNodeInterface getFrom() {
+        return from;
+    }
+
+    public GameEventInterface getEvent() {
+        return event;
     }
 }

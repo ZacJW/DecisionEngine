@@ -1,4 +1,4 @@
-package DecisionEngine;
+package DecisionEngine.Listener;
 
 import static org.junit.Assert.assertTrue;
 
@@ -11,8 +11,6 @@ import DecisionEngine.Core.EventCaptureInterface;
 import DecisionEngine.Core.EventCaptureSyncSet;
 import DecisionEngine.Event.GameEventInterface;
 import DecisionEngine.GameObject.StateLinkInterface;
-import DecisionEngine.Listener.ListenPoint;
-import DecisionEngine.Listener.ListenedVar;
 
 public class ListenedVarTest {
     @Test

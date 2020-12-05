@@ -1,0 +1,87 @@
+html{
+    min-height: 100%;
+    margin:0;
+}
+
+body{
+    position: relative;
+    margin: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(62, 62, 255);
+    
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+body.full-flex {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+  }
+
+nav.topbar{
+    width:100%;
+    background-color: rgb(51, 54, 70);
+    display: flex;
+    position: sticky;
+    top:0;
+
+}
+
+nav.topbar a {
+    padding: 0.5em;
+    text-decoration: none;
+    color: white;
+    margin: 0.5em 0.25em;
+    border-radius: 0.5em;
+}
+nav.topbar a:hover{
+    background-color: rgb(89, 106, 121);
+}
+nav.topbar a.active {
+    background-color: rgb(32, 34, 44);
+}
+
+nav.footer{
+    padding: 1rem;
+    background-color: rgb(78, 82, 105);
+    color: white;
+    font-weight: bolder;
+    display: flex;
+}
+
+nav.footer img#GitHubLogo {
+    vertical-align: baseline;
+    height: 0.8em;
+    display: inline;
+    position: relative;
+    bottom: -0.02em;
+
+}
+
+nav.footer a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    margin: 0 1em;
+}
+
+nav.footer a:hover{
+    background-color: rgb(32, 34, 44);
+}
+
+div.center {
+    margin: 0 auto;
+    max-width: 70em;
+    height: auto;
+}

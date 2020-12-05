@@ -2,11 +2,11 @@ package DecisionEngine.GameObject;
 
 import java.util.ArrayList;
 
-public abstract class StateNode {
-    StateMap map;
-    ArrayList<StateLink> links;
+public abstract class StateNode implements StateNodeInterface {
+    StateMapInterface map;
+    ArrayList<StateLinkInterface> links;
     
-    public StateNode(StateMap map, ArrayList<StateLink> links) throws NullPointerException {
+    public StateNode(StateMapInterface map, ArrayList<StateLinkInterface> links) throws NullPointerException {
         if (map == null){
             throw new NullPointerException("map cannot be null");
         }
@@ -14,13 +14,13 @@ public abstract class StateNode {
         this.links = links;
     }
 
-    public StateNode(StateMap map) throws NullPointerException {
+    public StateNode(StateMapInterface map) throws NullPointerException {
         if (map == null){
             throw new NullPointerException("map cannot be null");
         }
         this.map = map;
-        this.links = new ArrayList<StateLink>();
+        this.links = new ArrayList<StateLinkInterface>();
     }
 
-    abstract void behaviour();
+    public abstract void behaviour();
 }

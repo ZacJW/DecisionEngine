@@ -60,4 +60,14 @@ class TestEvent implements GameEventInterface {
     public void run(){
 
     }
+
+    @Override
+    public void addLink(StateLinkInterface link) {
+
+    }
+
+    @Override
+    public void removeLink(StateLinkInterface link) {
+
+    }
 }

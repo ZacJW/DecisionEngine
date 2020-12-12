@@ -14,6 +14,16 @@ public interface GameEventInterface extends Runnable {
      */
     public Collection<? extends StateLinkInterface> getLinks();
     /**
+     * Adds a link to the event to be triggered when the event is triggered
+     * @param link the link to be added
+     */
+    public void addLink(StateLinkInterface link);
+    /**
+     * Removes a link from the event so it is no longer triggered when the event is triggered
+     * @param link the link to be removed
+     */
+    public void removeLink(StateLinkInterface link);
+    /**
      * Get all events listening to this event
      * @return a Collection of all GameEventInterface objects listening to this event
      */

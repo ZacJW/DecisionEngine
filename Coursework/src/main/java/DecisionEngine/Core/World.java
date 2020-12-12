@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 import DecisionEngine.Event.GameEventInterface;
 import DecisionEngine.GameObject.GameObjectInterface;
+import DecisionEngine.GameObject.StateLinkInterface;
 import DecisionEngine.GameObject.StateNode;
 import DecisionEngine.GameObject.StateNodeInterface;
 
@@ -65,5 +66,9 @@ public abstract class World {
         }catch (InterruptedException e){
 
         }
+    }
+
+    public void addStateUpdate(StateNodeInterface node, StateLinkInterface link){
+        pendingStates.add(node, link);
     }
 }

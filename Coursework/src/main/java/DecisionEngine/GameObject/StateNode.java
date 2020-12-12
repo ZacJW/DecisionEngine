@@ -35,4 +35,16 @@ public abstract class StateNode implements StateNodeInterface {
     }
 
     public abstract void behaviour();
+
+    public void addLink(StateLinkInterface link, Integer priority){
+        links.put(priority, link);
+    }
+
+    public void removeLink(StateLinkInterface link){
+        links.removeByValue(link);
+    }
+
+    public void removeLink(Integer priority){
+        links.removeByKey(priority);
+    }
 }

@@ -9,10 +9,9 @@ import java.util.concurrent.TimeUnit;
 import DecisionEngine.Event.GameEventInterface;
 import DecisionEngine.GameObject.GameObjectInterface;
 import DecisionEngine.GameObject.StateLinkInterface;
-import DecisionEngine.GameObject.StateNode;
 import DecisionEngine.GameObject.StateNodeInterface;
 
-public abstract class World {
+public abstract class World implements WorldInterface {
     //ArrayList<GameObject> gameObjects;
     Set<GameObjectInterface> gameObjects;
     EventCaptureInterface uncheckedEvents;
@@ -28,7 +27,7 @@ public abstract class World {
         return uncheckedEvents;
     }
 
-    protected void processBehaviours(){
+    public void processBehaviours(){
         uncheckedEvents.reset();
         ExecutorService pool = Executors.newCachedThreadPool();
         for (GameObjectInterface gameObject : gameObjects){
@@ -42,7 +41,7 @@ public abstract class World {
         }
     }
 
-    protected void processEvents(){
+    public void processEvents(){
         ExecutorService pool = Executors.newCachedThreadPool();
         for (GameEventInterface event : uncheckedEvents){
             pool.submit(event);
@@ -55,7 +54,7 @@ public abstract class World {
         }
     }
 
-    protected void updateStates(){
+    public void updateStates(){
         ExecutorService pool = Executors.newCachedThreadPool();
         for (StateNodeInterface node : pendingStates){
             pool.submit(pendingStates.getLink(node));

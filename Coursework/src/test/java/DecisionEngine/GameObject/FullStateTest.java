@@ -72,6 +72,12 @@ class TestWorld extends World{
     public void doStateUpdate(){
         updateStates();
     }
+
+    @Override
+    public void mainloop() {
+        // TODO Auto-generated method stub
+
+    }
 }
 
 class TestEvent extends GameEvent {

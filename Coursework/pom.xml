@@ -137,6 +137,17 @@
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
         </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.2.0</version>
+          <configuration>
+            <reportOutputDirectory>/tmp/javadoc-build-copy</reportOutputDirectory>
+            <notimestamp>true</notimestamp>
+            <subpackages>DecisionEngine</subpackages>
+            <sourcepath>./src/main/java/</sourcepath>
+          </configuration>
+        </plugin>
       </plugins>
     </pluginManagement>
   </build>

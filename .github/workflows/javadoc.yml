@@ -16,12 +16,12 @@ jobs:
       with:
         java-version: 11
     - run: mkdir /tmp/javadoc-build-copy
-    - run: javadoc -subpackages DecisionEngine -sourcepath ./Coursework/src/main/java/ -d /tmp/javadoc-build-copy
+    - run: mvn javadoc:javadoc --file ./Coursework/pom.xml
     - uses: actions/checkout@v2
       with:
         ref: pages
     - run: rm -rf ./release-docs/
-    - run: cp -r /tmp/javadoc-build-copy ./release-docs
+    - run: cp -r /tmp/javadoc-build-copy/apidocs ./release-docs
     - uses: EndBug/add-and-commit@v5
       with:
         add: ./release-docs/

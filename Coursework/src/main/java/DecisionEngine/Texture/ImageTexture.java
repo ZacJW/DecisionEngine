@@ -12,9 +12,13 @@ import static org.lwjgl.opengl.GL33C.*;
 import org.lwjgl.stb.*;
 import org.lwjgl.system.MemoryStack;
 
+import DecisionEngine.LWJGLDelegate.LWJGLInterface;
+
 public class ImageTexture implements TextureInterface {
     int texture;
-    public ImageTexture(String path, int min_filter, int mag_filter) throws FileNotFoundException, IOException{
+    LWJGLInterface lwjgl;
+    public ImageTexture(LWJGLInterface lwjgl, String path, int min_filter, int mag_filter) throws FileNotFoundException, IOException{
+        this.lwjgl = lwjgl;
         File imageFile = new File(path);
         FileInputStream imageFileStream = new FileInputStream(imageFile);
         FileChannel imageFileChannel = imageFileStream.getChannel();
@@ -25,11 +29,11 @@ public class ImageTexture implements TextureInterface {
             IntBuffer components = stack.callocInt(1);
             STBImage.stbi_set_flip_vertically_on_load(true);
             image = STBImage.stbi_load_from_memory(imageFileChannel.map(FileChannel.MapMode.READ_ONLY, 0, imageFileChannel.size()), width, height, components, 4);
-            texture = glGenTextures();
-            glBindTexture(GL_TEXTURE_2D, texture);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, min_filter);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, mag_filter);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width.get(0), height.get(0), 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
+            texture = lwjgl.glGenTextures();
+            lwjgl.glBindTexture(GL_TEXTURE_2D, texture);
+            lwjgl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, min_filter);
+            lwjgl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, mag_filter);
+            lwjgl.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width.get(0), height.get(0), 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
             STBImage.stbi_image_free(image);
         }
 
@@ -42,6 +46,6 @@ public class ImageTexture implements TextureInterface {
     }
 
     protected void finalize(){
-        glDeleteTextures(texture);
+        lwjgl.glDeleteTextures(texture);
     }
 }

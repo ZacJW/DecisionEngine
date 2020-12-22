@@ -19,7 +19,7 @@ public class ListenedVarTest {
         ListenedVar<String> var = new ListenedVar<String>(ec, "Hello");
         ListenPoint<String> lp = var.getListenPoint();
         TestEvent event = new TestEvent(lp);
-        lp.register(event);
+        lp.registerEvent(event);
         var.set("World");
         Set<GameEventInterface> testSet = new HashSet<GameEventInterface>();
         testSet.add(event);

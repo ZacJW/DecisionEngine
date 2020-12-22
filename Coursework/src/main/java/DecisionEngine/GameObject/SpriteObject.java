@@ -1,5 +1,6 @@
 package DecisionEngine.GameObject;
 
+import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 import DecisionEngine.Material.Material;
 import DecisionEngine.Render.Renderable;
 import DecisionEngine.Texture.Quad;
@@ -22,44 +23,45 @@ public class SpriteObject extends GameObject implements Renderable {
     Quad textureCoords;
     int vao;
     Material material;
-    public SpriteObject(Quad objectCoords, Quad textureCoords, Material material){
+    LWJGLInterface lwjgl;
+    public SpriteObject(LWJGLInterface lwjgl, Quad objectCoords, Quad textureCoords, Material material){
         super();
+        this.lwjgl = lwjgl;
         this.objectCoords = objectCoords;
         this.textureCoords = textureCoords;
         this.material = material;
-        this.vao = glGenVertexArrays();
-        glBindVertexArray(vao);
+        this.vao = lwjgl.glGenVertexArrays();
+        lwjgl.glBindVertexArray(vao);
 
-        int vbo_verticies = glGenBuffers();
+        int vbo_verticies = lwjgl.glGenBuffers();
         try (MemoryStack stack = MemoryStack.stackPush()){
             FloatBuffer verticiesBuffer = stack.callocFloat(objectCoords.getArray().length);
             verticiesBuffer.put(objectCoords.getArray()).flip();
-            glBindBuffer(GL_ARRAY_BUFFER, vbo_verticies);
-            glBufferData(GL_ARRAY_BUFFER, verticiesBuffer, GL_STATIC_DRAW);
+            lwjgl.glBindBuffer(GL_ARRAY_BUFFER, vbo_verticies);
+            lwjgl.glBufferData(GL_ARRAY_BUFFER, verticiesBuffer, GL_STATIC_DRAW);
         }
         
 
-        int ebo = glGenBuffers();
+        int ebo = lwjgl.glGenBuffers();
         try (MemoryStack stack = MemoryStack.stackPush()){
             ByteBuffer indicies = stack.calloc(EBO_INDICIES.length);
             indicies.put(EBO_INDICIES).flip();
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-            glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicies, GL_STATIC_DRAW);
+            lwjgl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+            lwjgl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indicies, GL_STATIC_DRAW);
         }
         
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
+        lwjgl.glEnableVertexAttribArray(0);
+        lwjgl.glVertexAttribPointer(0, 2, GL_FLOAT, false, 0, 0);
 
-        int vbo_texCoords = glGenBuffers();
+        int vbo_texCoords = lwjgl.glGenBuffers();
         try (MemoryStack stack = MemoryStack.stackPush()){
             FloatBuffer texCoordsBuffer = stack.callocFloat(textureCoords.getArray().length);
             texCoordsBuffer.put(textureCoords.getArray()).flip();
-            glBindBuffer(GL_ARRAY_BUFFER, vbo_texCoords);
-            glBufferData(GL_ARRAY_BUFFER, texCoordsBuffer, GL_STATIC_DRAW);
+            lwjgl.glBindBuffer(GL_ARRAY_BUFFER, vbo_texCoords);
+            lwjgl.glBufferData(GL_ARRAY_BUFFER, texCoordsBuffer, GL_STATIC_DRAW);
         }
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
-
+        lwjgl.glEnableVertexAttribArray(1);
+        lwjgl.glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
     }
 
     public int getVAO() {
@@ -73,8 +75,8 @@ public class SpriteObject extends GameObject implements Renderable {
     public void render() {
         try {
             material.enable();
-            glBindVertexArray(vao);
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
+            lwjgl.glBindVertexArray(vao);
+            lwjgl.glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
         } finally {
             material.disable();
         }

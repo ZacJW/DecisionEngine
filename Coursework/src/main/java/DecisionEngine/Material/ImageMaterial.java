@@ -1,5 +1,6 @@
 package DecisionEngine.Material;
 
+import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 import DecisionEngine.Shader.Shader;
 import DecisionEngine.Texture.ImageTexture;
 
@@ -10,26 +11,27 @@ import static org.lwjgl.opengl.GL33C.*;
  */
 public class ImageMaterial implements Material {
 
-    Shader shader = Shader.imageShader;
+    Shader shader = Shader.getImageShader();
     ImageTexture texture;
-
-    public ImageMaterial(ImageTexture texture){
+    LWJGLInterface lwjgl;
+    public ImageMaterial(LWJGLInterface lwjgl, ImageTexture texture){
         this.texture = texture;
+        this.lwjgl = lwjgl;
     }
 
     @Override
     public void enable() {
-        glUseProgram(shader.getShaderID());
-        glActiveTexture(0);
-        glUniform1i(glGetUniformLocation(shader.getShaderID(), "inTexture"), 0);
-        glBindTexture(GL_TEXTURE_2D, texture.getTextureID());
+        lwjgl.glUseProgram(shader.getShaderID());
+        lwjgl.glActiveTexture(0);
+        lwjgl.glUniform1i(lwjgl.glGetUniformLocation(shader.getShaderID(), "inTexture"), 0);
+        lwjgl.glBindTexture(GL_TEXTURE_2D, texture.getTextureID());
     }
 
     @Override
     public void disable() {
-        glUseProgram(0);
-        glActiveTexture(0);
-        glBindTexture(GL_TEXTURE_2D, 0);
+        lwjgl.glUseProgram(0);
+        lwjgl.glActiveTexture(0);
+        lwjgl.glBindTexture(GL_TEXTURE_2D, 0);
     }
     
 }

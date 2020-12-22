@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import org.lwjgl.system.MemoryStack;
 
+import DecisionEngine.Exceptions.ShaderInitialisationException;
 import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 
 import static org.lwjgl.opengl.GL33C.*;
@@ -55,9 +56,12 @@ public class Shader implements ShaderInterface{
      */
     int shader;
     LWJGLInterface lwjgl;
-    private static boolean initialised = false;
-    public static void initialise(LWJGLInterface lwjgl){
-        if (initialised){
+    String vertexShaderString;
+    String fragmentShaderString;
+
+    private static boolean initialisedShaders = false;
+    public static void initialiseShaders(LWJGLInterface lwjgl){
+        if (initialisedShaders){
             return;
         }
         imageShader = new Shader(lwjgl, imageShaderVertexString, imageShaderFragmentString);
@@ -71,16 +75,14 @@ public class Shader implements ShaderInterface{
         this.lwjgl = lwjgl;
         Scanner vertexShaderReader = new Scanner(vertexShaderFile);
         Scanner fragmentShaderReader = new Scanner(fragmentShaderFile);
-        String vertexShaderString = "";
+        vertexShaderString = "";
         while (vertexShaderReader.hasNextLine()){
             vertexShaderString += vertexShaderReader.nextLine();
         }
-        String fragmentShaderString = "";
+        fragmentShaderString = "";
         while (fragmentShaderReader.hasNextLine()){
             fragmentShaderString += fragmentShaderReader.nextLine();
         }
-
-        _Shader(vertexShaderString, fragmentShaderString);
 
         vertexShaderReader.close();
         fragmentShaderReader.close();
@@ -88,11 +90,9 @@ public class Shader implements ShaderInterface{
 
     public Shader(LWJGLInterface lwjgl, String vertexShaderString, String fragmentShaderString){
         this.lwjgl = lwjgl;
-        _Shader(vertexShaderString, fragmentShaderString);
     }
 
-    private void _Shader(String vertexShaderString, String fragmentShaderString){
-        
+    public void initialise() throws ShaderInitialisationException {
         int vertexShader = lwjgl.glCreateShader(GL_VERTEX_SHADER);
         lwjgl.glShaderSource(vertexShader, vertexShaderString);
         lwjgl.glCompileShader(vertexShader);
@@ -100,7 +100,7 @@ public class Shader implements ShaderInterface{
             IntBuffer status = stack.callocInt(1);
             lwjgl.glGetShaderiv(vertexShader, GL_COMPILE_STATUS, status);
             if (status.get(0) != GL_TRUE){
-                throw new RuntimeException(lwjgl.glGetShaderInfoLog(vertexShader));
+                throw new ShaderInitialisationException("Vertex Shader Compilation Error: " + lwjgl.glGetShaderInfoLog(vertexShader));
             }
         }
         
@@ -111,7 +111,7 @@ public class Shader implements ShaderInterface{
             IntBuffer status = stack.callocInt(1);
             lwjgl.glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, status);
             if (status.get(0) != GL_TRUE){
-                throw new RuntimeException(lwjgl.glGetShaderInfoLog(fragmentShader));
+                throw new ShaderInitialisationException("Fragment Shader Compilation Error: " + lwjgl.glGetShaderInfoLog(fragmentShader));
             }
         }
 
@@ -123,7 +123,7 @@ public class Shader implements ShaderInterface{
             IntBuffer status = stack.callocInt(1);
             lwjgl.glGetProgramiv(shader, GL_LINK_STATUS, status);
             if (status.get(0) != GL_TRUE){
-                throw new RuntimeException(lwjgl.glGetProgramInfoLog(shader));
+                throw new ShaderInitialisationException("Shader Program Linking Error: " + lwjgl.glGetProgramInfoLog(shader));
             }
         }
         lwjgl.glDeleteShader(vertexShader);

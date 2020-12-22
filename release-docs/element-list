@@ -1,7 +1,9 @@
 DecisionEngine.Core
 DecisionEngine.Event
 DecisionEngine.GameObject
+DecisionEngine.Input
 DecisionEngine.Listener
+DecisionEngine.LWJGLDelegate
 DecisionEngine.Material
 DecisionEngine.Render
 DecisionEngine.Shader

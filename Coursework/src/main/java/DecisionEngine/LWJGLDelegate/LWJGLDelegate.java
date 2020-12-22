@@ -2,6 +2,7 @@ package DecisionEngine.LWJGLDelegate;
 
 import java.io.PrintStream;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -14,6 +15,12 @@ import org.lwjgl.opengl.GL33C;
 import org.lwjgl.opengl.GL;
 
 public class LWJGLDelegate implements LWJGLInterface {
+
+    public static final LWJGLDelegate lwjgl = new LWJGLDelegate();
+
+    private LWJGLDelegate() {
+
+    }
 
     @Override
     public GLFWErrorCallback GLFWErrorCallbackCreatePrint(PrintStream stream) {
@@ -103,6 +110,11 @@ public class LWJGLDelegate implements LWJGLInterface {
     @Override
     public void glfwSwapBuffers(long window) {
         GLFW.glfwSwapBuffers(window);
+    }
+
+    @Override
+    public GLFWVidMode glfwGetVideoMode(long monitor) {
+        return GLFW.glfwGetVideoMode(monitor);
     }
 
     @Override
@@ -219,5 +231,50 @@ public class LWJGLDelegate implements LWJGLInterface {
     @Override
     public void glDeleteShader(int shader) {
         GL33C.glDeleteShader(shader);
+    }
+
+    @Override
+    public int glGenVertexArrays() {
+        return GL33C.glGenVertexArrays();
+    }
+
+    @Override
+    public void glBindVertexArray(int array) {
+        GL33C.glBindVertexArray(array);
+    }
+
+    @Override
+    public int glGenBuffers() {
+        return GL33C.glGenBuffers();
+    }
+
+    @Override
+    public void glBindBuffer(int target, int buffer) {
+        GL33C.glBindBuffer(target, buffer);
+    }
+
+    @Override
+    public void glBufferData(int target, FloatBuffer data, int usage) {
+        GL33C.glBufferData(target, data, usage);
+    }
+
+    @Override
+    public void glBufferData(int target, ByteBuffer data, int usage) {
+        GL33C.glBufferData(target, data, usage);
+    }
+
+    @Override
+    public void glEnableVertexAttribArray(int index) {
+        GL33C.glEnableVertexAttribArray(index);
+    }
+
+    @Override
+    public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, long pointer) {
+        GL33C.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+    }
+
+    @Override
+    public void glDrawElements(int mode, int count, int type, long indices) {
+        GL33C.glDrawElements(mode, count, type, indices);
     }
 }

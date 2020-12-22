@@ -2,6 +2,7 @@ package DecisionEngine.LWJGLDelegate;
 
 import java.io.PrintStream;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -28,7 +29,10 @@ public interface LWJGLInterface {
     public boolean glfwWindowShouldClose(long window);
     public void glfwPollEvents();
     public void glfwSwapBuffers(long window);
+    public GLFWVidMode glfwGetVideoMode(long monitor);
+    
     public GLCapabilities GLCreateCapabilities();
+    
     public void glClear(int mask);
     public void glViewport(int x, int y, int w, int h);
     public void glUseProgram(int program);
@@ -51,4 +55,13 @@ public interface LWJGLInterface {
     public void glGetProgramiv(int program, int pname, IntBuffer params);
     public String glGetProgramInfoLog(int program);
     public void glDeleteShader(int shader);
+    public int glGenVertexArrays();
+    public void glBindVertexArray(int array);
+    public int glGenBuffers();
+    public void glBindBuffer(int target, int buffer);
+    public void glBufferData(int target, FloatBuffer data, int usage);
+    public void glBufferData(int target, ByteBuffer data, int usage);
+    public void glEnableVertexAttribArray(int index);
+    public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, long pointer);
+    public void glDrawElements(int mode, int count, int type, long indicies);
 }

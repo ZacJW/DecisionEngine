@@ -5,7 +5,7 @@ import java.util.Set;
 
 import DecisionEngine.Event.GameEventInterface;
 
-public class ListenPoint<T> {
+public class ListenPoint<T>{
     ListenedVar<T> listenedVar;
     Set<GameEventInterface> listeners;
 
@@ -18,11 +18,11 @@ public class ListenPoint<T> {
         return listenedVar.get();
     }
 
-    public void register(GameEventInterface event){
+    public void registerEvent(GameEventInterface event){
         listeners.add(event);
     }
 
-    public void unregister(GameEventInterface event){
+    public void unregisterEvent(GameEventInterface event){
         try{
             listeners.remove(event);
         }catch (NullPointerException e){

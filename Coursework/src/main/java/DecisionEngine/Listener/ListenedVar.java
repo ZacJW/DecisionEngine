@@ -19,6 +19,10 @@ public class ListenedVar<T> {
 
     public void set(T var){
         this.var = var;
+        trigger();
+    }
+
+    public void trigger(){
         eventCapture.add(listenPoint.listeners);
     }
 

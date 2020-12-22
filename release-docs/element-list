@@ -1,5 +1,6 @@
 DecisionEngine.Core
 DecisionEngine.Event
+DecisionEngine.Exceptions
 DecisionEngine.GameObject
 DecisionEngine.Input
 DecisionEngine.Listener

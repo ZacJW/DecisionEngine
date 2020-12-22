@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":10,"i2":9};
+var data = {"i0":9,"i1":10,"i2":10,"i3":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -201,8 +201,13 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise(DecisionEngine.LWJGLDelegate.LWJGLInterface)">initialise</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialiseShaders(DecisionEngine.LWJGLDelegate.LWJGLInterface)">initialiseShaders</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -268,13 +273,13 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="initialise(DecisionEngine.LWJGLDelegate.LWJGLInterface)">
+<a id="initialiseShaders(DecisionEngine.LWJGLDelegate.LWJGLInterface)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>initialise</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;initialise&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</pre>
+<h4>initialiseShaders</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;initialiseShaders&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</pre>
 </li>
 </ul>
 <a id="getImageShader()">
@@ -284,6 +289,22 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <li class="blockList">
 <h4>getImageShader</h4>
 <pre class="methodSignature">public static&nbsp;<a href="Shader.html" title="class in DecisionEngine.Shader">Shader</a>&nbsp;getImageShader()</pre>
+</li>
+</ul>
+<a id="initialise()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initialise</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;initialise()
+                throws <a href="../Exceptions/ShaderInitialisationException.html" title="class in DecisionEngine.Exceptions">ShaderInitialisationException</a></pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="ShaderInterface.html#initialise()">initialise</a></code>&nbsp;in interface&nbsp;<code><a href="ShaderInterface.html" title="interface in DecisionEngine.Shader">ShaderInterface</a></code></dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../Exceptions/ShaderInitialisationException.html" title="class in DecisionEngine.Exceptions">ShaderInitialisationException</a></code></dd>
+</dl>
 </li>
 </ul>
 <a id="getShaderID()">

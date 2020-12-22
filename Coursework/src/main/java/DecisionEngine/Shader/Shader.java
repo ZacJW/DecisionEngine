@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import org.lwjgl.system.MemoryStack;
 
+import DecisionEngine.LWJGLDelegate.LWJGLInterface;
+
 import static org.lwjgl.opengl.GL33C.*;
 
 /**
@@ -46,13 +48,27 @@ public class Shader implements ShaderInterface{
     /**
      * A simple shader that just maps a single texture onto geometry and renders it shadelessly
      */
-    public static final Shader imageShader = new Shader(imageShaderVertexString, imageShaderFragmentString);
+    private static Shader imageShader;
 
     /**
      * The OpenGL ID for the compiled and linked shader program
      */
     int shader;
-    public Shader(File vertexShaderFile, File fragmentShaderFile) throws FileNotFoundException, IOException {
+    LWJGLInterface lwjgl;
+    private static boolean initialised = false;
+    public static void initialise(LWJGLInterface lwjgl){
+        if (initialised){
+            return;
+        }
+        imageShader = new Shader(lwjgl, imageShaderVertexString, imageShaderFragmentString);
+    }
+
+    public static Shader getImageShader(){
+        return imageShader;
+    }
+
+    public Shader(LWJGLInterface lwjgl, File vertexShaderFile, File fragmentShaderFile) throws FileNotFoundException, IOException {
+        this.lwjgl = lwjgl;
         Scanner vertexShaderReader = new Scanner(vertexShaderFile);
         Scanner fragmentShaderReader = new Scanner(fragmentShaderFile);
         String vertexShaderString = "";
@@ -70,47 +86,48 @@ public class Shader implements ShaderInterface{
         fragmentShaderReader.close();
     }
 
-    public Shader(String vertexShaderString, String fragmentShaderString){
+    public Shader(LWJGLInterface lwjgl, String vertexShaderString, String fragmentShaderString){
+        this.lwjgl = lwjgl;
         _Shader(vertexShaderString, fragmentShaderString);
     }
 
     private void _Shader(String vertexShaderString, String fragmentShaderString){
         
-        int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(vertexShader, vertexShaderString);
-        glCompileShader(vertexShader);
+        int vertexShader = lwjgl.glCreateShader(GL_VERTEX_SHADER);
+        lwjgl.glShaderSource(vertexShader, vertexShaderString);
+        lwjgl.glCompileShader(vertexShader);
         try (MemoryStack stack = MemoryStack.stackPush()){
             IntBuffer status = stack.callocInt(1);
-            glGetShaderiv(vertexShader, GL_COMPILE_STATUS, status);
+            lwjgl.glGetShaderiv(vertexShader, GL_COMPILE_STATUS, status);
             if (status.get(0) != GL_TRUE){
-                throw new RuntimeException(glGetShaderInfoLog(vertexShader));
+                throw new RuntimeException(lwjgl.glGetShaderInfoLog(vertexShader));
             }
         }
         
-        int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragmentShader, fragmentShaderString);
-        glCompileShader(fragmentShader);
+        int fragmentShader = lwjgl.glCreateShader(GL_FRAGMENT_SHADER);
+        lwjgl.glShaderSource(fragmentShader, fragmentShaderString);
+        lwjgl.glCompileShader(fragmentShader);
         try (MemoryStack stack = MemoryStack.stackPush()){
             IntBuffer status = stack.callocInt(1);
-            glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, status);
+            lwjgl.glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, status);
             if (status.get(0) != GL_TRUE){
-                throw new RuntimeException(glGetShaderInfoLog(fragmentShader));
+                throw new RuntimeException(lwjgl.glGetShaderInfoLog(fragmentShader));
             }
         }
 
-        shader = glCreateProgram();
-        glAttachShader(shader, vertexShader);
-        glAttachShader(shader, fragmentShader);
-        glLinkProgram(shader);
+        shader = lwjgl.glCreateProgram();
+        lwjgl.glAttachShader(shader, vertexShader);
+        lwjgl.glAttachShader(shader, fragmentShader);
+        lwjgl.glLinkProgram(shader);
         try (MemoryStack stack = MemoryStack.stackPush()){
             IntBuffer status = stack.callocInt(1);
-            glGetProgramiv(shader, GL_LINK_STATUS, status);
+            lwjgl.glGetProgramiv(shader, GL_LINK_STATUS, status);
             if (status.get(0) != GL_TRUE){
-                throw new RuntimeException(glGetProgramInfoLog(shader));
+                throw new RuntimeException(lwjgl.glGetProgramInfoLog(shader));
             }
         }
-        glDeleteShader(vertexShader);
-        glDeleteShader(fragmentShader);
+        lwjgl.glDeleteShader(vertexShader);
+        lwjgl.glDeleteShader(fragmentShader);
     }
 
     /**

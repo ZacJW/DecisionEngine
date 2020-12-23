@@ -71,6 +71,14 @@ public class Shader implements ShaderInterface{
         return imageShader;
     }
 
+    /**
+     * Creates a Shader from files containing vertex shader source code and fragment shader source code.
+     * @param lwjgl An LWJGL middleman object to proxy all OpenGL calls through.
+     * @param vertexShaderFile A File object of the vertex shader source file.
+     * @param fragmentShaderFile A File object of the fragment shader source file.
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public Shader(LWJGLInterface lwjgl, File vertexShaderFile, File fragmentShaderFile) throws FileNotFoundException, IOException {
         this.lwjgl = lwjgl;
         Scanner vertexShaderReader = new Scanner(vertexShaderFile);
@@ -88,6 +96,12 @@ public class Shader implements ShaderInterface{
         fragmentShaderReader.close();
     }
 
+    /**
+     * Creates a Shader from Strings containing vertex shader source code and fragment shader source code.
+     * @param lwjgl vertex shader source code and fragment shader source code.
+     * @param vertexShaderString A String of the vertex shader source code.
+     * @param fragmentShaderString A String of the fragment shader source code.
+     */
     public Shader(LWJGLInterface lwjgl, String vertexShaderString, String fragmentShaderString){
         this.lwjgl = lwjgl;
     }

@@ -49,7 +49,7 @@ public class Shader implements ShaderInterface{
     /**
      * A simple shader that just maps a single texture onto geometry and renders it shadelessly
      */
-    private static Shader imageShader;
+    private volatile static Shader imageShader;
 
     /**
      * The OpenGL ID for the compiled and linked shader program
@@ -59,14 +59,28 @@ public class Shader implements ShaderInterface{
     String vertexShaderString;
     String fragmentShaderString;
 
-    private static boolean initialisedShaders = false;
-    public static void initialiseShaders(LWJGLInterface lwjgl){
-        if (initialisedShaders){
+    private volatile static boolean createdShaders = false;
+
+    /**
+     * Creates all the built-in shaders. Be sure to call this before calling the
+     * get method for any of the built-in shaders.
+     * 
+     * Note this does not initialise the created shaders, so this can be called
+     * from any thread.
+     * @param lwjgl An LWJGL middleman object to proxy all OpenGL calls through.
+     */
+    public synchronized static void createShaders(LWJGLInterface lwjgl){
+        if (createdShaders){
             return;
         }
         imageShader = new Shader(lwjgl, imageShaderVertexString, imageShaderFragmentString);
     }
 
+    /**
+     * Gets the built-in imageShader that just textures geometry with a single
+     * texture and renders it shadelessly.
+     * @return the built-in imageShader.
+     */
     public static Shader getImageShader(){
         return imageShader;
     }

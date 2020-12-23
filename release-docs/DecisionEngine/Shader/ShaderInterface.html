@@ -128,6 +128,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">ShaderInterface</span></pre>
+<div class="block">The interface all shader program objects must implement.</div>
 </li>
 </ul>
 </div>
@@ -151,12 +152,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShaderID()">getShaderID</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Gets the OpenGL shader program object ID</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Initialises the shader program for use by materials.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -182,6 +187,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <h4>getShaderID</h4>
 <pre class="methodSignature">int&nbsp;getShaderID()</pre>
+<div class="block">Gets the OpenGL shader program object ID</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>shader program ID</dd>
+</dl>
 </li>
 </ul>
 <a id="initialise()">
@@ -192,6 +202,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>initialise</h4>
 <pre class="methodSignature">void&nbsp;initialise()
          throws <a href="../Exceptions/ShaderInitialisationException.html" title="class in DecisionEngine.Exceptions">ShaderInitialisationException</a></pre>
+<div class="block">Initialises the shader program for use by materials.
+ 
+ All OpenGL calls should be in this method to be called only by the main thread.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="../Exceptions/ShaderInitialisationException.html" title="class in DecisionEngine.Exceptions">ShaderInitialisationException</a></code></dd>

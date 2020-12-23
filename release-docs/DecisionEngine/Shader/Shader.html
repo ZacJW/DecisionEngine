@@ -162,13 +162,17 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.io.File,java.io.File)">Shader</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html?is-external=true" title="class or interface in java.io" class="externalLink">File</a>&nbsp;vertexShaderFile,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html?is-external=true" title="class or interface in java.io" class="externalLink">File</a>&nbsp;fragmentShaderFile)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a Shader from files containing vertex shader source code and fragment shader source code.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.lang.String,java.lang.String)">Shader</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;vertexShaderString,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;fragmentShaderString)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Creates a Shader from Strings containing vertex shader source code and fragment shader source code.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -203,7 +207,9 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">Initialises the shader program for use by materials.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
@@ -245,7 +251,12 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html?is-external=true" title="class or interface in java.io" class="externalLink">File</a>&nbsp;fragmentShaderFile)
        throws <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/FileNotFoundException.html?is-external=true" title="class or interface in java.io" class="externalLink">FileNotFoundException</a>,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/IOException.html?is-external=true" title="class or interface in java.io" class="externalLink">IOException</a></pre>
+<div class="block">Creates a Shader from files containing vertex shader source code and fragment shader source code.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>lwjgl</code> - An LWJGL middleman object to proxy all OpenGL calls through.</dd>
+<dd><code>vertexShaderFile</code> - A File object of the vertex shader source file.</dd>
+<dd><code>fragmentShaderFile</code> - A File object of the fragment shader source file.</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/FileNotFoundException.html?is-external=true" title="class or interface in java.io" class="externalLink">FileNotFoundException</a></code></dd>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/IOException.html?is-external=true" title="class or interface in java.io" class="externalLink">IOException</a></code></dd>
@@ -261,6 +272,13 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <pre>public&nbsp;Shader&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;vertexShaderString,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;fragmentShaderString)</pre>
+<div class="block">Creates a Shader from Strings containing vertex shader source code and fragment shader source code.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>lwjgl</code> - vertex shader source code and fragment shader source code.</dd>
+<dd><code>vertexShaderString</code> - A String of the vertex shader source code.</dd>
+<dd><code>fragmentShaderString</code> - A String of the fragment shader source code.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -299,6 +317,10 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <h4>initialise</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;initialise()
                 throws <a href="../Exceptions/ShaderInitialisationException.html" title="class in DecisionEngine.Exceptions">ShaderInitialisationException</a></pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="ShaderInterface.html#initialise()">ShaderInterface</a></code></span></div>
+<div class="block">Initialises the shader program for use by materials.
+ 
+ All OpenGL calls should be in this method to be called only by the main thread.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="ShaderInterface.html#initialise()">initialise</a></code>&nbsp;in interface&nbsp;<code><a href="ShaderInterface.html" title="interface in DecisionEngine.Shader">ShaderInterface</a></code></dd>
@@ -318,6 +340,8 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="ShaderInterface.html#getShaderID()">getShaderID</a></code>&nbsp;in interface&nbsp;<code><a href="ShaderInterface.html" title="interface in DecisionEngine.Shader">ShaderInterface</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>shader program ID</dd>
 </dl>
 </li>
 </ul>

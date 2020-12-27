@@ -1,7 +1,8 @@
 package DecisionEngine.Core;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -12,13 +13,12 @@ import DecisionEngine.GameObject.StateLinkInterface;
 import DecisionEngine.GameObject.StateNodeInterface;
 
 public abstract class World implements WorldInterface {
-    //ArrayList<GameObject> gameObjects;
-    Set<GameObjectInterface> gameObjects;
+    Map<GameObjectInterface, ObjectWorldData> gameObjects;
     EventCaptureInterface uncheckedEvents;
     StateUpdateInterface pendingStates;
 
     public World() {
-        gameObjects = new HashSet<GameObjectInterface>();
+        gameObjects = new HashMap<GameObjectInterface, ObjectWorldData>();
         uncheckedEvents = new EventCaptureSyncSet();
         pendingStates = new StateUpdateSyncMap();
     }
@@ -30,8 +30,8 @@ public abstract class World implements WorldInterface {
     public void processBehaviours(){
         uncheckedEvents.reset();
         ExecutorService pool = Executors.newCachedThreadPool();
-        for (GameObjectInterface gameObject : gameObjects){
-            pool.execute(gameObject);
+        for (Entry<GameObjectInterface, ObjectWorldData> entry : gameObjects.entrySet()){
+            pool.execute(entry.getKey());
         }
         pool.shutdown();
         try{

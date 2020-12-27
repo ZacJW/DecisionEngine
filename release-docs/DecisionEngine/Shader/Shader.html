@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":10,"i2":10,"i3":9};
+var data = {"i0":9,"i1":9,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -193,28 +193,33 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static <a href="Shader.html" title="class in DecisionEngine.Shader">Shader</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getImageShader()">getImageShader</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>static void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#createShaders(DecisionEngine.LWJGLDelegate.LWJGLInterface)">createShaders</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</code></th>
+<td class="colLast">
+<div class="block">Creates all the built-in shaders.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>static <a href="Shader.html" title="class in DecisionEngine.Shader">Shader</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getImageShader()">getImageShader</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets the built-in imageShader that just textures geometry with a single
+ texture and renders it shadelessly.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShaderID()">getShaderID</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Returns the OpenGL ID for the compiled and linked shader program</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Initialises the shader program for use by materials.</div>
 </td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialiseShaders(DecisionEngine.LWJGLDelegate.LWJGLInterface)">initialiseShaders</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</code></th>
-<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -291,13 +296,22 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="initialiseShaders(DecisionEngine.LWJGLDelegate.LWJGLInterface)">
+<a id="createShaders(DecisionEngine.LWJGLDelegate.LWJGLInterface)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>initialiseShaders</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;initialiseShaders&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</pre>
+<h4>createShaders</h4>
+<pre class="methodSignature">public static&nbsp;void&nbsp;createShaders&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl)</pre>
+<div class="block">Creates all the built-in shaders. Be sure to call this before calling the
+ get method for any of the built-in shaders.
+ 
+ Note this does not initialise the created shaders, so this can be called
+ from any thread.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>lwjgl</code> - An LWJGL middleman object to proxy all OpenGL calls through.</dd>
+</dl>
 </li>
 </ul>
 <a id="getImageShader()">
@@ -307,6 +321,12 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <li class="blockList">
 <h4>getImageShader</h4>
 <pre class="methodSignature">public static&nbsp;<a href="Shader.html" title="class in DecisionEngine.Shader">Shader</a>&nbsp;getImageShader()</pre>
+<div class="block">Gets the built-in imageShader that just textures geometry with a single
+ texture and renders it shadelessly.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the built-in imageShader.</dd>
+</dl>
 </li>
 </ul>
 <a id="initialise()">

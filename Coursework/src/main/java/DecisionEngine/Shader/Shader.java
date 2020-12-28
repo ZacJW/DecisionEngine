@@ -58,6 +58,7 @@ public class Shader implements ShaderInterface{
     LWJGLInterface lwjgl;
     String vertexShaderString;
     String fragmentShaderString;
+    boolean initialised = false;
 
     private volatile static boolean createdShaders = false;
 
@@ -118,9 +119,14 @@ public class Shader implements ShaderInterface{
      */
     public Shader(LWJGLInterface lwjgl, String vertexShaderString, String fragmentShaderString){
         this.lwjgl = lwjgl;
+        this.vertexShaderString = vertexShaderString;
+        this.fragmentShaderString = fragmentShaderString;
     }
 
     public void initialise() throws ShaderInitialisationException {
+        if (initialised){
+            return;
+        }
         int vertexShader = lwjgl.glCreateShader(GL_VERTEX_SHADER);
         lwjgl.glShaderSource(vertexShader, vertexShaderString);
         lwjgl.glCompileShader(vertexShader);
@@ -156,6 +162,7 @@ public class Shader implements ShaderInterface{
         }
         lwjgl.glDeleteShader(vertexShader);
         lwjgl.glDeleteShader(fragmentShader);
+        initialised = true;
     }
 
     /**

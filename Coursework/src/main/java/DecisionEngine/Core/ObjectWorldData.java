@@ -5,8 +5,6 @@ import java.util.Set;
 
 import org.ejml.simple.SimpleMatrix;
 
-import DecisionEngine.GameObject.GameObjectInterface;
-
 class ObjectWorldData {
     private static final double[][] defaultPosition = {
         {0.0f, 0.0f, 0.0f, 0.0f},
@@ -14,8 +12,9 @@ class ObjectWorldData {
         {0.0f, 0.0f, 0.0f, 0.0f},
         {0.0f, 0.0f, 0.0f, 1.0f},
     };
-    GameObjectInterface parent;
-    Set<GameObjectInterface> children = new HashSet<GameObjectInterface>();
+    ObjectWorldData parent;
+    Set<ObjectWorldData> children = new HashSet<ObjectWorldData>();
+    SimpleMatrix globalPosition = new SimpleMatrix(defaultPosition);
     SimpleMatrix position;
 
     ObjectWorldData(){
@@ -23,26 +22,35 @@ class ObjectWorldData {
     }
 
     ObjectWorldData(SimpleMatrix position){
-        if (position.numRows() != 4 || position.numCols() != 4){
-            throw new RuntimeException("Position matrix must be 4 rows and 4 columns, not "
-                                       + position.numRows() + " rows and " + position.numCols() + " columns.");
-        }
+        checkMatrixSize(position);
         this.position = position;
     }
     
-    void setParent(GameObjectInterface parent){
+    void setParent(ObjectWorldData parent){
         this.parent = parent;
     }
 
-    void addChild(GameObjectInterface child){
+    void addChild(ObjectWorldData child){
         children.add(child);
     }
 
-    void removeChild(GameObjectInterface child){
+    void removeChild(ObjectWorldData child){
         children.remove(child);
     }
 
     void clearChildren(){
         children.clear();
+    }
+
+    void updatePosition(SimpleMatrix position){
+        checkMatrixSize(position);
+        this.position = position.copy();
+    }
+
+    void checkMatrixSize(SimpleMatrix matrix){
+        if (matrix.numRows() != 4 || matrix.numCols() != 4){
+            throw new RuntimeException("Matrix must be 4 rows and 4 columns, not "
+                                       + matrix.numRows() + " rows and " + matrix.numCols() + " columns.");
+        } 
     }
 }

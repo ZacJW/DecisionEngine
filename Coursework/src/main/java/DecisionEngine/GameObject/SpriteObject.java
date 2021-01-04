@@ -1,5 +1,6 @@
 package DecisionEngine.GameObject;
 
+import DecisionEngine.Core.WorldInterface;
 import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 import DecisionEngine.Material.Material;
 import DecisionEngine.Render.Renderable;
@@ -10,6 +11,7 @@ import static org.lwjgl.opengl.GL33C.*;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 
+import org.ejml.simple.SimpleMatrix;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.system.MemoryStack;
 
@@ -24,12 +26,22 @@ public class SpriteObject extends GameObject implements Renderable {
     int vao;
     Material material;
     LWJGLInterface lwjgl;
-    public SpriteObject(LWJGLInterface lwjgl, Quad objectCoords, Quad textureCoords, Material material){
+    WorldInterface world;
+    boolean initialised = false;
+    public SpriteObject(LWJGLInterface lwjgl, WorldInterface world, Quad objectCoords, Quad textureCoords, Material material){
         super();
         this.lwjgl = lwjgl;
+        this.world = world;
         this.objectCoords = objectCoords;
         this.textureCoords = textureCoords;
         this.material = material;
+    }
+
+    @Override
+    public void initialise(){
+        if (initialised){
+            return;
+        }
         this.vao = lwjgl.glGenVertexArrays();
         lwjgl.glBindVertexArray(vao);
 
@@ -62,6 +74,7 @@ public class SpriteObject extends GameObject implements Renderable {
         }
         lwjgl.glEnableVertexAttribArray(1);
         lwjgl.glVertexAttribPointer(1, 2, GL_FLOAT, false, 0, 0);
+        initialised = true;
     }
 
     public int getVAO() {
@@ -72,9 +85,9 @@ public class SpriteObject extends GameObject implements Renderable {
         return EBO;
     }
 
-    public void render() {
+    public void render(SimpleMatrix fullCameraTransform) {
         try {
-            material.enable();
+            material.enable(fullCameraTransform, world.getPosition(this));
             lwjgl.glBindVertexArray(vao);
             lwjgl.glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
         } finally {

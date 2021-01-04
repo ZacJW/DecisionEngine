@@ -28,8 +28,8 @@ public class Shader implements ShaderInterface{
         
         "void main()\n" +
         "{\n" +
-        //"    gl_Position = cameraTransform * globalTransform * vec4(inPos, 0.0, 1.0);\n" +
-        "    gl_Position = vec4(inPos, 0.0, 1.0);\n" +
+        "    gl_Position = cameraTransform * globalTransform * vec4(inPos, 0.0, 1.0);\n" +
+        //"    gl_Position = vec4(inPos, 0.0, 1.0);\n" +
         "    TexCoord = inTexCoord;\n" +
         "}\n";
 
@@ -59,6 +59,10 @@ public class Shader implements ShaderInterface{
     String vertexShaderString;
     String fragmentShaderString;
     boolean initialised = false;
+    int cameraTransformLocation;
+    String cameraTransformName;
+    int globalTransformLocation;
+    String globalTransformName;
 
     private volatile static boolean createdShaders = false;
 
@@ -74,7 +78,7 @@ public class Shader implements ShaderInterface{
         if (createdShaders){
             return;
         }
-        imageShader = new Shader(lwjgl, imageShaderVertexString, imageShaderFragmentString);
+        imageShader = new Shader(lwjgl, imageShaderVertexString, imageShaderFragmentString, "cameraTransform", "globalTransform");
     }
 
     /**
@@ -94,7 +98,7 @@ public class Shader implements ShaderInterface{
      * @throws FileNotFoundException
      * @throws IOException
      */
-    public Shader(LWJGLInterface lwjgl, File vertexShaderFile, File fragmentShaderFile) throws FileNotFoundException, IOException {
+    public Shader(LWJGLInterface lwjgl, File vertexShaderFile, File fragmentShaderFile, String cameraTransformName, String globalTransformName) throws FileNotFoundException, IOException {
         this.lwjgl = lwjgl;
         Scanner vertexShaderReader = new Scanner(vertexShaderFile);
         Scanner fragmentShaderReader = new Scanner(fragmentShaderFile);
@@ -109,6 +113,8 @@ public class Shader implements ShaderInterface{
 
         vertexShaderReader.close();
         fragmentShaderReader.close();
+        this.cameraTransformName = cameraTransformName;
+        this.globalTransformName = globalTransformName;
     }
 
     /**
@@ -117,10 +123,12 @@ public class Shader implements ShaderInterface{
      * @param vertexShaderString A String of the vertex shader source code.
      * @param fragmentShaderString A String of the fragment shader source code.
      */
-    public Shader(LWJGLInterface lwjgl, String vertexShaderString, String fragmentShaderString){
+    public Shader(LWJGLInterface lwjgl, String vertexShaderString, String fragmentShaderString, String cameraTransformName, String globalTransformName){
         this.lwjgl = lwjgl;
         this.vertexShaderString = vertexShaderString;
         this.fragmentShaderString = fragmentShaderString;
+        this.cameraTransformName = cameraTransformName;
+        this.globalTransformName = globalTransformName;
     }
 
     public void initialise() throws ShaderInitialisationException {
@@ -162,6 +170,8 @@ public class Shader implements ShaderInterface{
         }
         lwjgl.glDeleteShader(vertexShader);
         lwjgl.glDeleteShader(fragmentShader);
+        cameraTransformLocation = lwjgl.glGetUniformLocation(shader, cameraTransformName);
+        globalTransformLocation = lwjgl.glGetUniformLocation(shader, globalTransformName);
         initialised = true;
     }
 
@@ -170,5 +180,15 @@ public class Shader implements ShaderInterface{
      */
     public int getShaderID(){
         return shader;
+    }
+
+    @Override
+    public int getCameraTransformLocation() {
+        return cameraTransformLocation;
+    }
+
+    @Override
+    public int getGlobalTransformLocation() {
+        return globalTransformLocation;
     }
 }

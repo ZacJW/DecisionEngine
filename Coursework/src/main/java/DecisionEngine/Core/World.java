@@ -23,6 +23,11 @@ public abstract class World implements WorldInterface {
         pendingStates = new StateUpdateSyncMap();
     }
 
+
+    public SimpleMatrix getPosition(GameObjectInterface gameObject){
+        return gameObjects.get(gameObject).position.copy();
+    }
+
     public EventCaptureInterface getEventCapture(){
         return uncheckedEvents;
     }

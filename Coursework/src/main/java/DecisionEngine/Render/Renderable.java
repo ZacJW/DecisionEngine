@@ -1,9 +1,7 @@
 package DecisionEngine.Render;
 
-import java.nio.ByteBuffer;
-
-import DecisionEngine.Shader.Shader;
+import org.ejml.simple.SimpleMatrix;
 
 public interface Renderable {
-    public void render();
+    public void render(SimpleMatrix fullCameraTransform);
 }

@@ -64,4 +64,5 @@ public interface LWJGLInterface {
     public void glEnableVertexAttribArray(int index);
     public void glVertexAttribPointer(int index, int size, int type, boolean normalized, int stride, long pointer);
     public void glDrawElements(int mode, int count, int type, long indicies);
+    public void glUniformMatrix4fv(int location, boolean transpose, float[] value);
 }

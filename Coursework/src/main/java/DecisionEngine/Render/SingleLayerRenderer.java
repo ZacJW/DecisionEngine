@@ -1,13 +1,21 @@
 package DecisionEngine.Render;
 
+import org.ejml.simple.SimpleMatrix;
+
+import DecisionEngine.Core.WorldInterface;
+import DecisionEngine.GameObject.CameraInterface;
 import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 
 /**
  * A simple OpenGL renderer that only supports a single render layer
  */
 public class SingleLayerRenderer extends OpenGLRenderer {
-    public SingleLayerRenderer(LWJGLInterface lwjgl) {
+    CameraInterface camera;
+    WorldInterface world;
+    public SingleLayerRenderer(LWJGLInterface lwjgl, CameraInterface camera, WorldInterface world){
         super(lwjgl);
+        this.camera = camera;
+        this.world = world;
     }
 
     /**
@@ -17,8 +25,9 @@ public class SingleLayerRenderer extends OpenGLRenderer {
 
     @Override
     public void renderAll(){
+        SimpleMatrix fullCameraTransform = camera.getCameraTransform().mult(world.getPosition(camera));
         for (Renderable object : layer){
-            object.render();
+            object.render(fullCameraTransform);
 
             // glUseProgram(object.getShader().getShaderID());
             // glBindVertexArray(object.getVAO());

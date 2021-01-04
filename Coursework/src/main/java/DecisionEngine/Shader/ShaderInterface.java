@@ -14,6 +14,18 @@ public interface ShaderInterface {
     public int getShaderID();
 
     /**
+     * 
+     * @return the OpenGL location of the camera transformation matrix for use in the vertex shader.
+     */
+    public int getCameraTransformLocation();
+
+    /**
+     * 
+     * @return the OpenGL location of the global transformation matrix for use in the vertex shader.
+     */
+    public int getGlobalTransformLocation();
+
+    /**
      * Initialises the shader program for use by materials.
      * 
      * All OpenGL calls should be in this method to be called only by the main thread.

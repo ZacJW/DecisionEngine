@@ -16,7 +16,7 @@ jobs:
       with:
         java-version: 11
     - run: mkdir /tmp/javadoc-build-copy
-    - run: mvn javadoc:javadoc --file ./Coursework/pom.xml
+    - run: mvn javadoc:javadoc --file ./pom.xml
     - uses: actions/checkout@v2
       with:
         ref: pages

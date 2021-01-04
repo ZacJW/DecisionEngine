@@ -6,7 +6,7 @@ import java.util.Set;
 import org.ejml.simple.SimpleMatrix;
 
 class ObjectWorldData {
-    private static final double[][] defaultPosition = {
+    private static final float[][] defaultPosition = {
         {0.0f, 0.0f, 0.0f, 0.0f},
         {0.0f, 0.0f, 0.0f, 0.0f},
         {0.0f, 0.0f, 0.0f, 0.0f},

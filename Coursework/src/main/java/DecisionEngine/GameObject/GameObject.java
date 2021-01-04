@@ -21,4 +21,9 @@ public class GameObject implements GameObjectInterface {
             map.getActiveNode().behaviour();
         }
     }
+
+    @Override
+    public void initialise() {
+        
+    }
 }

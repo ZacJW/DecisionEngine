@@ -85,7 +85,13 @@ public abstract class World implements WorldInterface {
         for (GameObjectInterface gameObject : spawningObjects.keySet()){
             gameObjects.put(gameObject, spawningObjects.get(gameObject));
             gameObject.initialise();
+            updatedPositions.add(spawningObjects.get(gameObject));
         }
+        spawningObjects.clear();
+    }
+
+    public void requestSpawn(GameObjectInterface gameObject, ObjectWorldData objectData){
+        spawningObjects.put(gameObject, objectData);
     }
 
     public void addStateUpdate(StateNodeInterface node, StateLinkInterface link){

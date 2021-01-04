@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -163,7 +163,8 @@ implements <a href="../Render/Renderable.html" title="interface in DecisionEngin
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.Texture.Quad,DecisionEngine.Texture.Quad,DecisionEngine.Material.Material)">SpriteObject</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.Core.WorldInterface,DecisionEngine.Texture.Quad,DecisionEngine.Texture.Quad,DecisionEngine.Material.Material)">SpriteObject</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
+            <a href="../Core/WorldInterface.html" title="interface in DecisionEngine.Core">WorldInterface</a>&nbsp;world,
             <a href="../Texture/Quad.html" title="class in DecisionEngine.Texture">Quad</a>&nbsp;objectCoords,
             <a href="../Texture/Quad.html" title="class in DecisionEngine.Texture">Quad</a>&nbsp;textureCoords,
             <a href="../Material/Material.html" title="interface in DecisionEngine.Material">Material</a>&nbsp;material)</code></th>
@@ -199,7 +200,14 @@ implements <a href="../Render/Renderable.html" title="interface in DecisionEngin
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#render()">render</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Initialises the object so it can be rendered.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#render(org.ejml.simple.SimpleMatrix)">render</a></span>&#8203;(org.ejml.simple.SimpleMatrix&nbsp;fullCameraTransform)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -233,13 +241,14 @@ implements <a href="../Render/Renderable.html" title="interface in DecisionEngin
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.Texture.Quad,DecisionEngine.Texture.Quad,DecisionEngine.Material.Material)">
+<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.Core.WorldInterface,DecisionEngine.Texture.Quad,DecisionEngine.Texture.Quad,DecisionEngine.Material.Material)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SpriteObject</h4>
 <pre>public&nbsp;SpriteObject&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
+                    <a href="../Core/WorldInterface.html" title="interface in DecisionEngine.Core">WorldInterface</a>&nbsp;world,
                     <a href="../Texture/Quad.html" title="class in DecisionEngine.Texture">Quad</a>&nbsp;objectCoords,
                     <a href="../Texture/Quad.html" title="class in DecisionEngine.Texture">Quad</a>&nbsp;textureCoords,
                     <a href="../Material/Material.html" title="interface in DecisionEngine.Material">Material</a>&nbsp;material)</pre>
@@ -255,6 +264,25 @@ implements <a href="../Render/Renderable.html" title="interface in DecisionEngin
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="initialise()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>initialise</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;initialise()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="GameObjectInterface.html#initialise()">GameObjectInterface</a></code></span></div>
+<div class="block">Initialises the object so it can be rendered.
+ 
+ All calls to OpenGL should be done here so it can be called by the main thread.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="GameObjectInterface.html#initialise()">initialise</a></code>&nbsp;in interface&nbsp;<code><a href="GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="GameObject.html#initialise()">initialise</a></code>&nbsp;in class&nbsp;<code><a href="GameObject.html" title="class in DecisionEngine.GameObject">GameObject</a></code></dd>
+</dl>
+</li>
+</ul>
 <a id="getVAO()">
 <!--   -->
 </a>
@@ -273,16 +301,16 @@ implements <a href="../Render/Renderable.html" title="interface in DecisionEngin
 <pre class="methodSignature">public&nbsp;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/ByteBuffer.html?is-external=true" title="class or interface in java.nio" class="externalLink">ByteBuffer</a>&nbsp;getEBO()</pre>
 </li>
 </ul>
-<a id="render()">
+<a id="render(org.ejml.simple.SimpleMatrix)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>render</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;render()</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;render&#8203;(org.ejml.simple.SimpleMatrix&nbsp;fullCameraTransform)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../Render/Renderable.html#render()">render</a></code>&nbsp;in interface&nbsp;<code><a href="../Render/Renderable.html" title="interface in DecisionEngine.Render">Renderable</a></code></dd>
+<dd><code><a href="../Render/Renderable.html#render(org.ejml.simple.SimpleMatrix)">render</a></code>&nbsp;in interface&nbsp;<code><a href="../Render/Renderable.html" title="interface in DecisionEngine.Render">Renderable</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -355,7 +383,7 @@ implements <a href="../Render/Renderable.html" title="interface in DecisionEngin
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
-<p class="legalCopy"><small>Copyright &#169; 2020. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2021. All rights reserved.</small></p>
 </footer>
 </body>
 </html>

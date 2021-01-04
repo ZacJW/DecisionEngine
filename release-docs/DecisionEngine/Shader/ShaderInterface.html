@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -151,12 +151,22 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCameraTransformLocation()">getCameraTransformLocation</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getGlobalTransformLocation()">getGlobalTransformLocation</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getShaderID()">getShaderID</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the OpenGL shader program object ID</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
 <td class="colLast">
@@ -191,6 +201,32 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>shader program ID</dd>
+</dl>
+</li>
+</ul>
+<a id="getCameraTransformLocation()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCameraTransformLocation</h4>
+<pre class="methodSignature">int&nbsp;getCameraTransformLocation()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the OpenGL location of the camera transformation matrix for use in the vertex shader.</dd>
+</dl>
+</li>
+</ul>
+<a id="getGlobalTransformLocation()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getGlobalTransformLocation</h4>
+<pre class="methodSignature">int&nbsp;getGlobalTransformLocation()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the OpenGL location of the global transformation matrix for use in the vertex shader.</dd>
 </dl>
 </li>
 </ul>
@@ -280,7 +316,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
-<p class="legalCopy"><small>Copyright &#169; 2020. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2021. All rights reserved.</small></p>
 </footer>
 </body>
 </html>

@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6};
+var data = {"i0":6,"i1":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -127,8 +127,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang" class="externalLink">Runnable</a></code></dd>
 </dl>
 <dl>
+<dt>All Known Subinterfaces:</dt>
+<dd><code><a href="CameraInterface.html" title="interface in DecisionEngine.GameObject">CameraInterface</a></code></dd>
+</dl>
+<dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="GameObject.html" title="class in DecisionEngine.GameObject">GameObject</a></code>, <code><a href="SpriteObject.html" title="class in DecisionEngine.GameObject">SpriteObject</a></code></dd>
+<dd><code><a href="Camera.html" title="class in DecisionEngine.GameObject">Camera</a></code>, <code><a href="GameObject.html" title="class in DecisionEngine.GameObject">GameObject</a></code>, <code><a href="SpriteObject.html" title="class in DecisionEngine.GameObject">SpriteObject</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">GameObjectInterface</span>
@@ -158,6 +162,13 @@ extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/ja
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStateMaps()">getStateMaps</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Initialises the object so it can be rendered.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Runnable">
@@ -185,10 +196,22 @@ extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/ja
 <a id="getStateMaps()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getStateMaps</h4>
 <pre class="methodSignature"><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Collection.html?is-external=true" title="class or interface in java.util" class="externalLink">Collection</a>&lt;<a href="StateMapInterface.html" title="interface in DecisionEngine.GameObject">StateMapInterface</a>&gt;&nbsp;getStateMaps()</pre>
+</li>
+</ul>
+<a id="initialise()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>initialise</h4>
+<pre class="methodSignature">void&nbsp;initialise()</pre>
+<div class="block">Initialises the object so it can be rendered.
+ 
+ All calls to OpenGL should be done here so it can be called by the main thread.</div>
 </li>
 </ul>
 </li>
@@ -260,7 +283,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/ja
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
-<p class="legalCopy"><small>Copyright &#169; 2020. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2021. All rights reserved.</small></p>
 </footer>
 </body>
 </html>

@@ -106,6 +106,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </tr>
 <tbody>
 <tr class="altColor">
+<th class="colFirst" scope="row"><a href="#DecisionEngine.Core">DecisionEngine.Core</a></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <th class="colFirst" scope="row"><a href="#DecisionEngine.GameObject">DecisionEngine.GameObject</a></th>
 <td class="colLast">&nbsp;</td>
 </tr>
@@ -115,10 +119,58 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <ul class="blockList">
 <li class="blockList">
+<section role="region"><a id="DecisionEngine.Core">
+<!--   -->
+</a>
+<h3>Uses of <a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a> in <a href="../../Core/package-summary.html">DecisionEngine.Core</a></h3>
+<table class="useSummary">
+<caption><span>Methods in <a href="../../Core/package-summary.html">DecisionEngine.Core</a> with parameters of type <a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Method</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>org.ejml.simple.SimpleMatrix</code></td>
+<th class="colSecond" scope="row"><span class="typeNameLabel">World.</span><code><span class="memberNameLink"><a href="../../Core/World.html#getPosition(DecisionEngine.GameObject.GameObjectInterface)">getPosition</a></span>&#8203;(<a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a>&nbsp;gameObject)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>org.ejml.simple.SimpleMatrix</code></td>
+<th class="colSecond" scope="row"><span class="typeNameLabel">WorldInterface.</span><code><span class="memberNameLink"><a href="../../Core/WorldInterface.html#getPosition(DecisionEngine.GameObject.GameObjectInterface)">getPosition</a></span>&#8203;(<a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a>&nbsp;gameObject)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><span class="typeNameLabel">World.</span><code><span class="memberNameLink"><a href="../../Core/World.html#updatePosition(DecisionEngine.GameObject.GameObjectInterface,org.ejml.simple.SimpleMatrix)">updatePosition</a></span>&#8203;(<a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a>&nbsp;gameObject,
+              org.ejml.simple.SimpleMatrix&nbsp;position)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</section>
+</li>
+<li class="blockList">
 <section role="region"><a id="DecisionEngine.GameObject">
 <!--   -->
 </a>
 <h3>Uses of <a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a> in <a href="../package-summary.html">DecisionEngine.GameObject</a></h3>
+<table class="useSummary">
+<caption><span>Subinterfaces of <a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a> in <a href="../package-summary.html">DecisionEngine.GameObject</a></span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Interface</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><code>interface&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../CameraInterface.html" title="interface in DecisionEngine.GameObject">CameraInterface</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</tbody>
+</table>
 <table class="useSummary">
 <caption><span>Classes in <a href="../package-summary.html">DecisionEngine.GameObject</a> that implement <a href="../GameObjectInterface.html" title="interface in DecisionEngine.GameObject">GameObjectInterface</a></span><span class="tabEnd">&nbsp;</span></caption>
 <tr>
@@ -129,10 +181,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../GameObject.html" title="class in DecisionEngine.GameObject">GameObject</a></span></code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../Camera.html" title="class in DecisionEngine.GameObject">Camera</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../GameObject.html" title="class in DecisionEngine.GameObject">GameObject</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../SpriteObject.html" title="class in DecisionEngine.GameObject">SpriteObject</a></span></code></th>
 <td class="colLast">&nbsp;</td>
@@ -191,7 +248,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a></div>
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 </nav>
-<p class="legalCopy"><small>Copyright &#169; 2020. All rights reserved.</small></p>
+<p class="legalCopy"><small>Copyright &#169; 2021. All rights reserved.</small></p>
 </footer>
 </body>
 </html>

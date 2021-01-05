@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -216,17 +216,24 @@ implements <a href="RendererInterface.html" title="interface in DecisionEngine.R
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pollEvents()">pollEvents</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Poll window events</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#renderAll()">renderAll</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Renders all render layers on the renderer and displays the resulting composite to the window</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#shouldTerminate()">shouldTerminate</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#terminate()">terminate</a></span>()</code></th>
 <td class="colLast">
@@ -343,7 +350,7 @@ implements <a href="RendererInterface.html" title="interface in DecisionEngine.R
 <a id="shouldTerminate()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>shouldTerminate</h4>
 <pre class="methodSignature">public&nbsp;boolean&nbsp;shouldTerminate()</pre>
@@ -352,6 +359,21 @@ implements <a href="RendererInterface.html" title="interface in DecisionEngine.R
 <dd><code><a href="RendererInterface.html#shouldTerminate()">shouldTerminate</a></code>&nbsp;in interface&nbsp;<code><a href="RendererInterface.html" title="interface in DecisionEngine.Render">RendererInterface</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Whether the program should terminate due to the user requesting the application to close.</dd>
+</dl>
+</li>
+</ul>
+<a id="pollEvents()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>pollEvents</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;pollEvents()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="RendererInterface.html#pollEvents()">RendererInterface</a></code></span></div>
+<div class="block">Poll window events</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="RendererInterface.html#pollEvents()">pollEvents</a></code>&nbsp;in interface&nbsp;<code><a href="RendererInterface.html" title="interface in DecisionEngine.Render">RendererInterface</a></code></dd>
 </dl>
 </li>
 </ul>

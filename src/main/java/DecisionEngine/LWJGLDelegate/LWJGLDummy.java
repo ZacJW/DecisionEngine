@@ -5,8 +5,12 @@ import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
+import org.lwjgl.glfw.GLFWCursorPosCallback;
+import org.lwjgl.glfw.GLFWCursorPosCallbackI;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWErrorCallbackI;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWKeyCallbackI;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GLCapabilities;
 
@@ -323,6 +327,18 @@ public class LWJGLDummy implements LWJGLInterface {
     public void glUniformMatrix4fv(int location, boolean transpose, float[] value) {
         // TODO Auto-generated method stub
 
+    }
+
+    @Override
+    public GLFWKeyCallback glfwSetKeyCallback(long window, GLFWKeyCallbackI cbfun) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public GLFWCursorPosCallback glfwSetCursorPosCallback(long window, GLFWCursorPosCallbackI cbfun) {
+        // TODO Auto-generated method stub
+        return null;
     }
     
 }

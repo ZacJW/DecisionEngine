@@ -7,8 +7,12 @@ import java.nio.IntBuffer;
 
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWErrorCallbackI;
+import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWKeyCallbackI;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWCursorPosCallback;
+import org.lwjgl.glfw.GLFWCursorPosCallbackI;
 import org.lwjgl.glfw.Callbacks;
 import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.opengl.GL33C;
@@ -281,5 +285,15 @@ public class LWJGLDelegate implements LWJGLInterface {
     @Override
     public void glUniformMatrix4fv(int location, boolean transpose, float[] value) {
         GL33C.glUniformMatrix4fv(location, transpose, value);
+    }
+
+    @Override
+    public GLFWKeyCallback glfwSetKeyCallback(long window, GLFWKeyCallbackI cbfun) {
+        return GLFW.glfwSetKeyCallback(window, cbfun);
+    }
+
+    @Override
+    public GLFWCursorPosCallback glfwSetCursorPosCallback(long window, GLFWCursorPosCallbackI cbfun) {
+        return GLFW.glfwSetCursorPosCallback(window, cbfun);
     }
 }

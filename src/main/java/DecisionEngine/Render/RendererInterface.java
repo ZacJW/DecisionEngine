@@ -11,6 +11,12 @@ public interface RendererInterface {
     public void initialise();
 
     /**
+     * 
+     * @return Whether the program should terminate due to the user requesting the application to close.
+     */
+    public boolean shouldTerminate();
+
+    /**
      * Stops the renderer, closes any windows created by it, and frees up resources consumed by it
      */
     public void terminate();

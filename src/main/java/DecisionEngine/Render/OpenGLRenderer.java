@@ -72,5 +72,10 @@ public class OpenGLRenderer implements RendererInterface{
         lwjgl.glfwSetErrorCallback(null);
         initialised = false;
     }
+
+    @Override
+    public boolean shouldTerminate() {
+        return lwjgl.glfwWindowShouldClose(window);
+    }
     
 }

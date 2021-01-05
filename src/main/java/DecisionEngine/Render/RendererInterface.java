@@ -17,6 +17,11 @@ public interface RendererInterface {
     public boolean shouldTerminate();
 
     /**
+     * Poll window events
+     */
+    public void pollEvents();
+
+    /**
      * Stops the renderer, closes any windows created by it, and frees up resources consumed by it
      */
     public void terminate();

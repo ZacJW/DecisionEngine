@@ -77,5 +77,10 @@ public class OpenGLRenderer implements RendererInterface{
     public boolean shouldTerminate() {
         return lwjgl.glfwWindowShouldClose(window);
     }
+
+    @Override
+    public void pollEvents() {
+        lwjgl.glfwPollEvents();
+    }
     
 }

@@ -2,6 +2,7 @@ package DecisionEngine.LWJGLDelegate;
 
 import java.io.PrintStream;
 import java.nio.ByteBuffer;
+import java.nio.DoubleBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
@@ -9,6 +10,8 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.glfw.GLFWKeyCallbackI;
+import org.lwjgl.glfw.GLFWMouseButtonCallback;
+import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
@@ -295,5 +298,15 @@ public class LWJGLDelegate implements LWJGLInterface {
     @Override
     public GLFWCursorPosCallback glfwSetCursorPosCallback(long window, GLFWCursorPosCallbackI cbfun) {
         return GLFW.glfwSetCursorPosCallback(window, cbfun);
+    }
+
+    @Override
+    public GLFWMouseButtonCallback glfwSetMouseButtonCallback(long window, GLFWMouseButtonCallbackI cbfun) {
+        return GLFW.glfwSetMouseButtonCallback(window, cbfun);
+    }
+
+    @Override
+    public void glfwGetCursorPos(long window, DoubleBuffer xpos, DoubleBuffer ypos) {
+        GLFW.glfwGetCursorPos(window, xpos, ypos);
     }
 }

@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -206,7 +206,7 @@ implements org.lwjgl.glfw.GLFWCursorPosCallbackI</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">CursorPositionInput</a></span>()</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.Core.EventCaptureInterface)">CursorPositionInput</a></span>&#8203;(<a href="../Core/EventCaptureInterface.html" title="interface in DecisionEngine.Core">EventCaptureInterface</a>&nbsp;eventCapture)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -228,10 +228,20 @@ implements org.lwjgl.glfw.GLFWCursorPosCallbackI</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="../Listener/ListenPoint.html" title="class in DecisionEngine.Listener">ListenPoint</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html?is-external=true" title="class or interface in java.util" class="externalLink">ArrayList</a>&lt;<a href="../Utils/Point2D_Double.html" title="class in DecisionEngine.Utils">Point2D_Double</a>&gt;&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getListenPoint()">getListenPoint</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#invoke(long,double,double)">invoke</a></span>&#8203;(long&nbsp;window,
       double&nbsp;xpos,
       double&nbsp;ypos)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#processPositionInput()">processPositionInput</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -272,13 +282,13 @@ implements org.lwjgl.glfw.GLFWCursorPosCallbackI</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;()">
+<a id="&lt;init&gt;(DecisionEngine.Core.EventCaptureInterface)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>CursorPositionInput</h4>
-<pre>public&nbsp;CursorPositionInput()</pre>
+<pre>public&nbsp;CursorPositionInput&#8203;(<a href="../Core/EventCaptureInterface.html" title="interface in DecisionEngine.Core">EventCaptureInterface</a>&nbsp;eventCapture)</pre>
 </li>
 </ul>
 </li>
@@ -294,7 +304,7 @@ implements org.lwjgl.glfw.GLFWCursorPosCallbackI</pre>
 <a id="invoke(long,double,double)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>invoke</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;invoke&#8203;(long&nbsp;window,
@@ -304,6 +314,24 @@ implements org.lwjgl.glfw.GLFWCursorPosCallbackI</pre>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>invoke</code>&nbsp;in interface&nbsp;<code>org.lwjgl.glfw.GLFWCursorPosCallbackI</code></dd>
 </dl>
+</li>
+</ul>
+<a id="getListenPoint()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getListenPoint</h4>
+<pre class="methodSignature">public&nbsp;<a href="../Listener/ListenPoint.html" title="class in DecisionEngine.Listener">ListenPoint</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html?is-external=true" title="class or interface in java.util" class="externalLink">ArrayList</a>&lt;<a href="../Utils/Point2D_Double.html" title="class in DecisionEngine.Utils">Point2D_Double</a>&gt;&gt;&nbsp;getListenPoint()</pre>
+</li>
+</ul>
+<a id="processPositionInput()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>processPositionInput</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;processPositionInput()</pre>
 </li>
 </ul>
 </li>

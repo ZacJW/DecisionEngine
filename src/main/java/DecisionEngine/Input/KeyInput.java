@@ -50,6 +50,9 @@ public class KeyInput implements GLFWKeyCallbackI {
     }
 
     synchronized public void processKeyInput(){
+        for (ListenedVar<ArrayList<KeyAction>> listenedVar : keyActionMap.values()){
+            listenedVar.get().clear();
+        }
         for (KeyAction action : keyQueue){
             if (keyActionMap.containsKey(action.scancode)){
                 ListenedVar<ArrayList<KeyAction>> listenedVar = keyActionMap.get(action.scancode);

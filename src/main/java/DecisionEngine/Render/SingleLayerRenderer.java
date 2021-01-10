@@ -2,6 +2,8 @@ package DecisionEngine.Render;
 
 import org.ejml.simple.SimpleMatrix;
 
+import org.lwjgl.opengl.GL33C;
+
 import DecisionEngine.Core.WorldInterface;
 import DecisionEngine.GameObject.CameraInterface;
 import DecisionEngine.LWJGLDelegate.LWJGLInterface;
@@ -26,6 +28,7 @@ public class SingleLayerRenderer extends OpenGLRenderer {
     @Override
     public void renderAll(){
         SimpleMatrix fullCameraTransform = camera.getCameraTransform().mult(world.getPosition(camera));
+        lwjgl.glClear(GL33C.GL_COLOR_BUFFER_BIT | GL33C.GL_DEPTH_BUFFER_BIT);
         for (Renderable object : layer){
             object.render(fullCameraTransform);
 
@@ -35,5 +38,6 @@ public class SingleLayerRenderer extends OpenGLRenderer {
             // glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
             //glDrawArrays(GL_TRIANGLES, 0, 6);
         }
+        lwjgl.glfwSwapBuffers(window);
     }
 }

@@ -3,6 +3,7 @@ package DecisionEngine.Core;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.ejml.data.MatrixType;
 import org.ejml.simple.SimpleMatrix;
 
 class ObjectWorldData {
@@ -22,7 +23,7 @@ class ObjectWorldData {
     }
 
     ObjectWorldData(SimpleMatrix position){
-        checkMatrixSize(position);
+        checkMatrix(position);
         this.position = position;
     }
     
@@ -43,11 +44,14 @@ class ObjectWorldData {
     }
 
     void updatePosition(SimpleMatrix position){
-        checkMatrixSize(position);
+        checkMatrix(position);
         this.position = position.copy();
     }
 
-    void checkMatrixSize(SimpleMatrix matrix){
+    void checkMatrix(SimpleMatrix matrix){
+        if (matrix.getType() != MatrixType.FDRM){
+            throw new RuntimeException("matrix must wrap FMatrixRMaj");
+        }
         if (matrix.numRows() != 4 || matrix.numCols() != 4){
             throw new RuntimeException("Matrix must be 4 rows and 4 columns, not "
                                        + matrix.numRows() + " rows and " + matrix.numCols() + " columns.");

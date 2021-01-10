@@ -104,6 +104,25 @@ public abstract class World implements WorldInterface {
         }
     }
 
+    public void processPositions(){
+        for (ObjectWorldData objectData : updatedPositions.topLevelObjects){
+            _processPosition(objectData);
+        }
+        updatedPositions.topLevelObjects.clear();
+        updatedPositions.parents.clear();
+    }
+
+    private void _processPosition(ObjectWorldData objectData){
+        if (objectData.parent == null){
+            objectData.globalPosition = objectData.position;
+        }else{
+            objectData.globalPosition = objectData.parent.globalPosition.mult(objectData.position);
+        }
+        for (ObjectWorldData childData : objectData.children){
+            _processPosition(childData);
+        }
+    }
+
     public void setFamily(GameObjectInterface parent, GameObjectInterface child){
         ObjectWorldData childData = gameObjects.get(child);
         ObjectWorldData oldParentData = childData.parent;

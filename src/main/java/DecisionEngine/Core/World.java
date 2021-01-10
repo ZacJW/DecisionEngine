@@ -140,8 +140,29 @@ public abstract class World implements WorldInterface {
         
     }
 
-    public void requestSpawn(GameObjectInterface gameObject, ObjectWorldData objectData){
+    public void requestSpawn(GameObjectInterface gameObject, GameObjectInterface parent, SimpleMatrix position){
+        if (position == null){
+            position = SimpleMatrix.identity(4, FMatrixRMaj.class);
+        }else if (gameObjects.containsKey(gameObject)){
+            throw new RuntimeException("gameObject is already spawned");
+        }
+        ObjectWorldData objectData = new ObjectWorldData(position);
+        if (parent != null){
+            ObjectWorldData parentData;
+            if (!gameObjects.containsKey(parent)){
+                if (!spawningObjects.containsKey(parent)){
+                    throw new RuntimeException("parent is not spawned or being spawned, and so is invalid");
+                }else{
+                    parentData = spawningObjects.get(parent);
+                }
+            }else{
+                parentData = gameObjects.get(parent);
+            }
+            objectData.parent = parentData;
+            parentData.children.add(objectData);
+        }
         spawningObjects.put(gameObject, objectData);
+
     }
 
     public void addStateUpdate(StateNodeInterface node, StateLinkInterface link){

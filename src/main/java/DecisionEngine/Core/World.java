@@ -7,6 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.ejml.data.FMatrixRMaj;
 import org.ejml.simple.SimpleMatrix;
 
 import DecisionEngine.Event.GameEventInterface;
@@ -88,6 +89,55 @@ public abstract class World implements WorldInterface {
             updatedPositions.add(spawningObjects.get(gameObject));
         }
         spawningObjects.clear();
+    }
+
+    public void addObject(GameObjectInterface gameObject){
+        addObject(gameObject, SimpleMatrix.identity(4, FMatrixRMaj.class));
+    }
+
+    public void addObject(GameObjectInterface gameObject, SimpleMatrix position){
+        if (gameObject == null){
+            throw new NullPointerException();
+        }
+        if (!gameObjects.containsKey(gameObject)){
+            gameObjects.put(gameObject, new ObjectWorldData(position));
+        }
+    }
+
+    public void setFamily(GameObjectInterface parent, GameObjectInterface child){
+        ObjectWorldData childData = gameObjects.get(child);
+        ObjectWorldData oldParentData = childData.parent;
+        ObjectWorldData parentData = gameObjects.get(parent);
+
+        if (parentData == null){
+            // Remove parent from child
+
+            if(oldParentData == null){
+                // Child is already without a parent, so return
+                return;
+            }
+            oldParentData.children.remove(childData);
+            childData.parent = null;
+        }else{
+            // Move child to new parent
+
+            // Check if parent is already one of child's children/grandchildren
+            ObjectWorldData grandParentData = parentData.parent;
+            while (grandParentData != null){
+                if (grandParentData == childData){
+                    throw new RuntimeException("child is already grandparent of parent");
+                }
+                grandParentData = grandParentData.parent;
+            }
+
+            if(oldParentData != null){
+                oldParentData.children.remove(childData);
+            }
+            parentData.children.add(childData);
+            childData.parent = parentData;
+        }
+        updatedPositions.migrateObject(oldParentData, childData);
+        
     }
 
     public void requestSpawn(GameObjectInterface gameObject, ObjectWorldData objectData){

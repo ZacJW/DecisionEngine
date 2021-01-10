@@ -100,7 +100,9 @@ public abstract class World implements WorldInterface {
             throw new NullPointerException();
         }
         if (!gameObjects.containsKey(gameObject)){
-            gameObjects.put(gameObject, new ObjectWorldData(position));
+            ObjectWorldData objectData = new ObjectWorldData(position);
+            gameObjects.put(gameObject, objectData);
+            updatedPositions.add(objectData);
         }
     }
 

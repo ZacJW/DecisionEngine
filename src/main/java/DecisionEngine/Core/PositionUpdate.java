@@ -87,4 +87,37 @@ public class PositionUpdate {
             }
         }
     }
+
+    public synchronized void migrateObject(ObjectWorldData oldParent, ObjectWorldData object){
+        
+        if (topLevelObjects.contains(object)){
+            // object is already in topLevelObjects
+
+            // remove references to object in old parents
+            removeObjectFromParents(oldParent, object, null);
+
+            // remove object from topLevelObjects, then re-add it
+            topLevelObjects.remove(object);
+
+        }else if (parents.containsKey(object)){
+            // one or more of object's children are already in topLevelObjects
+            for (ObjectWorldData child : parents.get(object)){
+                removeObjectFromParents(child.parent, child, object.parent);
+                removeObjectFromParents(oldParent, child, null);
+                topLevelObjects.remove(child);
+            }
+        }
+        add(object);
+    }
+
+    private void removeObjectFromParents(ObjectWorldData parent, ObjectWorldData object, ObjectWorldData limit){
+        while (parent != limit){
+            Set<ObjectWorldData> children = parents.get(parent);
+            children.remove(object);
+            if (children.isEmpty()){
+                parents.remove(parent);
+            }
+            parent = parent.parent;
+        }
+    }
 }

@@ -40,4 +40,12 @@ public class SingleLayerRenderer extends OpenGLRenderer {
         }
         lwjgl.glfwSwapBuffers(window);
     }
+
+    public void addObject(Renderable object){
+        layer.add(object);
+    }
+
+    public void removeObject(Renderable object){
+        layer.remove(object);
+    }
 }

@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -205,6 +205,16 @@ extends <a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">Ope
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addObject(DecisionEngine.Render.Renderable)">addObject</a></span>&#8203;(<a href="Renderable.html" title="interface in DecisionEngine.Render">Renderable</a>&nbsp;object)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeObject(DecisionEngine.Render.Renderable)">removeObject</a></span>&#8203;(<a href="Renderable.html" title="interface in DecisionEngine.Render">Renderable</a>&nbsp;object)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#renderAll()">renderAll</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Renders all render layers on the renderer and displays the resulting composite to the window</div>
@@ -265,7 +275,7 @@ extends <a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">Ope
 <a id="renderAll()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>renderAll</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;renderAll()</pre>
@@ -277,6 +287,24 @@ extends <a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">Ope
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="OpenGLRenderer.html#renderAll()">renderAll</a></code>&nbsp;in class&nbsp;<code><a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">OpenGLRenderer</a></code></dd>
 </dl>
+</li>
+</ul>
+<a id="addObject(DecisionEngine.Render.Renderable)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addObject</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;addObject&#8203;(<a href="Renderable.html" title="interface in DecisionEngine.Render">Renderable</a>&nbsp;object)</pre>
+</li>
+</ul>
+<a id="removeObject(DecisionEngine.Render.Renderable)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>removeObject</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;removeObject&#8203;(<a href="Renderable.html" title="interface in DecisionEngine.Render">Renderable</a>&nbsp;object)</pre>
 </li>
 </ul>
 </li>

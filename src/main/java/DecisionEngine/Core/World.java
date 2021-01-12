@@ -7,6 +7,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.Renderer;
+
 import org.ejml.data.FMatrixRMaj;
 import org.ejml.simple.SimpleMatrix;
 
@@ -14,6 +16,9 @@ import DecisionEngine.Event.GameEventInterface;
 import DecisionEngine.GameObject.GameObjectInterface;
 import DecisionEngine.GameObject.StateLinkInterface;
 import DecisionEngine.GameObject.StateNodeInterface;
+import DecisionEngine.Input.Input;
+import DecisionEngine.LWJGLDelegate.LWJGLInterface;
+import DecisionEngine.Render.RendererInterface;
 
 public abstract class World implements WorldInterface {
     Map<GameObjectInterface, ObjectWorldData> gameObjects;
@@ -21,11 +26,15 @@ public abstract class World implements WorldInterface {
     StateUpdateInterface pendingStates;
     PositionUpdate updatedPositions = new PositionUpdate();
     Map<GameObjectInterface, ObjectWorldData> spawningObjects = new HashMap<GameObjectInterface, ObjectWorldData>();
+    Input input;
+    RendererInterface renderer;
 
-    public World() {
+    public World(LWJGLInterface lwjgl, RendererInterface renderer) {
         gameObjects = new HashMap<GameObjectInterface, ObjectWorldData>();
         uncheckedEvents = new EventCaptureSyncSet();
         pendingStates = new StateUpdateSyncMap();
+        this.renderer = renderer;
+        input = new Input(uncheckedEvents, lwjgl, renderer.getWindow());
     }
 
     public void updatePosition(GameObjectInterface gameObject, SimpleMatrix position){
@@ -188,5 +197,13 @@ public abstract class World implements WorldInterface {
 
     public void addStateUpdate(StateNodeInterface node, StateLinkInterface link){
         pendingStates.add(node, link);
+    }
+
+    public Input getInput(){
+        return input;
+    }
+
+    public RendererInterface getRenderer(){
+        return renderer;
     }
 }

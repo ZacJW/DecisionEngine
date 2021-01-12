@@ -46,7 +46,11 @@ public class KeyInput implements GLFWKeyCallbackI {
     }
 
     synchronized public KeyState getKeyState(int scancode){
-        return keyStateMap.get(scancode);
+        KeyState state = keyStateMap.get(scancode);
+        if (state == null){
+            state = new KeyState(0, scancode, false, 0);
+        }
+        return state;
     }
 
     synchronized public void processKeyInput(){

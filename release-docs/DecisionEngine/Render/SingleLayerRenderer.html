@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -180,9 +180,8 @@ extends <a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">Ope
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.GameObject.CameraInterface,DecisionEngine.Core.WorldInterface)">SingleLayerRenderer</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
-                   <a href="../GameObject/CameraInterface.html" title="interface in DecisionEngine.GameObject">CameraInterface</a>&nbsp;camera,
-                   <a href="../Core/WorldInterface.html" title="interface in DecisionEngine.Core">WorldInterface</a>&nbsp;world)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.GameObject.CameraInterface)">SingleLayerRenderer</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
+                   <a href="../GameObject/CameraInterface.html" title="interface in DecisionEngine.GameObject">CameraInterface</a>&nbsp;camera)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -220,6 +219,11 @@ extends <a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">Ope
 <div class="block">Renders all render layers on the renderer and displays the resulting composite to the window</div>
 </td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setWorld(DecisionEngine.Core.WorldInterface)">setWorld</a></span>&#8203;(<a href="../Core/WorldInterface.html" title="interface in DecisionEngine.Core">WorldInterface</a>&nbsp;world)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.DecisionEngine.Render.OpenGLRenderer">
@@ -251,15 +255,14 @@ extends <a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">Ope
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.GameObject.CameraInterface,DecisionEngine.Core.WorldInterface)">
+<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,DecisionEngine.GameObject.CameraInterface)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SingleLayerRenderer</h4>
 <pre>public&nbsp;SingleLayerRenderer&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
-                           <a href="../GameObject/CameraInterface.html" title="interface in DecisionEngine.GameObject">CameraInterface</a>&nbsp;camera,
-                           <a href="../Core/WorldInterface.html" title="interface in DecisionEngine.Core">WorldInterface</a>&nbsp;world)</pre>
+                           <a href="../GameObject/CameraInterface.html" title="interface in DecisionEngine.GameObject">CameraInterface</a>&nbsp;camera)</pre>
 </li>
 </ul>
 </li>
@@ -272,6 +275,15 @@ extends <a href="OpenGLRenderer.html" title="class in DecisionEngine.Render">Ope
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="setWorld(DecisionEngine.Core.WorldInterface)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setWorld</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setWorld&#8203;(<a href="../Core/WorldInterface.html" title="interface in DecisionEngine.Core">WorldInterface</a>&nbsp;world)</pre>
+</li>
+</ul>
 <a id="renderAll()">
 <!--   -->
 </a>

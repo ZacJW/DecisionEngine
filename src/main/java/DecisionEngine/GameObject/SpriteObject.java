@@ -87,7 +87,7 @@ public class SpriteObject extends GameObject implements Renderable {
 
     public void render(SimpleMatrix fullCameraTransform) {
         try {
-            material.enable(fullCameraTransform, world.getPosition(this).transpose());
+            material.enable(fullCameraTransform, world.getPosition(this));
             lwjgl.glBindVertexArray(vao);
             lwjgl.glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
         } finally {

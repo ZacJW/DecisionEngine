@@ -14,9 +14,12 @@ import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 public class SingleLayerRenderer extends OpenGLRenderer {
     CameraInterface camera;
     WorldInterface world;
-    public SingleLayerRenderer(LWJGLInterface lwjgl, CameraInterface camera, WorldInterface world){
+    public SingleLayerRenderer(LWJGLInterface lwjgl, CameraInterface camera){
         super(lwjgl);
         this.camera = camera;
+    }
+
+    public void setWorld(WorldInterface world){
         this.world = world;
     }
 

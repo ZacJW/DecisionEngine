@@ -60,7 +60,7 @@ public class ImageTexture implements TextureInterface {
         return texture;
     }
 
-    protected void finalize(){
+    protected void delete(){
         lwjgl.glDeleteTextures(texture);
     }
 }

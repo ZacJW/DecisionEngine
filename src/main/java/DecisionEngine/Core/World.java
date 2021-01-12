@@ -7,8 +7,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import javax.swing.Renderer;
-
 import org.ejml.data.FMatrixRMaj;
 import org.ejml.simple.SimpleMatrix;
 
@@ -28,12 +26,22 @@ public abstract class World implements WorldInterface {
     Map<GameObjectInterface, ObjectWorldData> spawningObjects = new HashMap<GameObjectInterface, ObjectWorldData>();
     Input input;
     RendererInterface renderer;
+    LWJGLInterface lwjgl;
+    boolean initialised = false;
 
     public World(LWJGLInterface lwjgl, RendererInterface renderer) {
         gameObjects = new HashMap<GameObjectInterface, ObjectWorldData>();
         uncheckedEvents = new EventCaptureSyncSet();
         pendingStates = new StateUpdateSyncMap();
         this.renderer = renderer;
+        this.lwjgl = lwjgl;
+    }
+
+    public void initialise(){
+        if (initialised){
+            return;
+        }
+        renderer.initialise();
         input = new Input(uncheckedEvents, lwjgl, renderer.getWindow());
     }
 

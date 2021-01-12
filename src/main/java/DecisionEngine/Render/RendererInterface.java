@@ -30,4 +30,10 @@ public interface RendererInterface {
      * Renders all render layers on the renderer and displays the resulting composite to the window
      */
     public void renderAll();
+
+    /**
+     * 
+     * @return The OpenGL window ID.
+     */
+    public long getWindow();
 }

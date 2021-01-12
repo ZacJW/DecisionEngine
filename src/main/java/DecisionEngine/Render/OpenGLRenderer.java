@@ -82,5 +82,10 @@ public class OpenGLRenderer implements RendererInterface{
     public void pollEvents() {
         lwjgl.glfwPollEvents();
     }
+
+    @Override
+    public long getWindow() {
+        return window;
+    }
     
 }

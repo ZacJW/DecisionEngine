@@ -30,7 +30,7 @@ public class SingleLayerRenderer extends OpenGLRenderer {
 
     @Override
     public void renderAll(){
-        SimpleMatrix fullCameraTransform = camera.getCameraTransform().mult(world.getPosition(camera));
+        SimpleMatrix fullCameraTransform = camera.getCameraTransform().mult(world.getPosition(camera)).transpose();
         lwjgl.glClear(GL33C.GL_COLOR_BUFFER_BIT | GL33C.GL_DEPTH_BUFFER_BIT);
         for (Renderable object : layer){
             object.render(fullCameraTransform);

@@ -11,4 +11,20 @@ public class KeyState {
         this.pressed = pressed;
         this.mods = mods;
     }
+
+    public int getKey() {
+        return key;
+    }
+
+    public int getScancode() {
+        return scancode;
+    }
+
+    public boolean isPressed() {
+        return pressed;
+    }
+
+    public int getMods() {
+        return mods;
+    }
 }

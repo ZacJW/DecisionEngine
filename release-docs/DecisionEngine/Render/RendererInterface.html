@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -150,32 +150,37 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>long</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getWindow()">getWindow</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Initialises the renderer, including creating any windows needed to display the output</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pollEvents()">pollEvents</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Poll window events</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#renderAll()">renderAll</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Renders all render layers on the renderer and displays the resulting composite to the window</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#shouldTerminate()">shouldTerminate</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#terminate()">terminate</a></span>()</code></th>
 <td class="colLast">
@@ -245,11 +250,24 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <a id="renderAll()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>renderAll</h4>
 <pre class="methodSignature">void&nbsp;renderAll()</pre>
 <div class="block">Renders all render layers on the renderer and displays the resulting composite to the window</div>
+</li>
+</ul>
+<a id="getWindow()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getWindow</h4>
+<pre class="methodSignature">long&nbsp;getWindow()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The OpenGL window ID.</dd>
+</dl>
 </li>
 </ul>
 </li>

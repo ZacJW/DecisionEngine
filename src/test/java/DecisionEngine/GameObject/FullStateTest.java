@@ -10,12 +10,16 @@ import org.junit.Test;
 
 import DecisionEngine.Core.World;
 import DecisionEngine.Event.GameEvent;
+import DecisionEngine.LWJGLDelegate.LWJGLDummy;
+import DecisionEngine.LWJGLDelegate.LWJGLInterface;
+import DecisionEngine.Render.RendererInterface;
 
 public class FullStateTest {
     @Test
     public void fullStateTest(){
         Set<String> output = Collections.synchronizedSet(new HashSet<String>());
-        TestWorld world = new TestWorld();
+        DummyRenderer renderer = new DummyRenderer();
+        TestWorld world = new TestWorld(new LWJGLDummy(), renderer);
         StateMap map = new StateMap();
         TestNode node1 = new TestNode(map, "Node1", output);
         map.pushNode(node1);
@@ -41,6 +45,46 @@ public class FullStateTest {
     }
 }
 
+class DummyRenderer implements RendererInterface {
+
+    @Override
+    public void initialise() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public boolean shouldTerminate() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void pollEvents() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void terminate() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void renderAll() {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public long getWindow() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+}
+
 class TestNode extends StateNode{
     String name;
     Set<String> out;
@@ -60,8 +104,8 @@ class TestNode extends StateNode{
 }
 
 class TestWorld extends World{
-    public TestWorld() {
-        super();
+    public TestWorld(LWJGLInterface lwjgl, RendererInterface renderer) {
+        super(lwjgl, renderer);
     }
     public void doBehaviours(){
         processBehaviours();

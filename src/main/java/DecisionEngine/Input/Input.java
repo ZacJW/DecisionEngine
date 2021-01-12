@@ -43,4 +43,8 @@ public class Input {
         cursorButtonInput.processButtonInput();
     }
 
+    public KeyState getKeyState(int scancode){
+        return keyInput.getKeyState(scancode);
+    }
+
 }

@@ -26,6 +26,12 @@ public interface ShaderInterface {
     public int getGlobalTransformLocation();
 
     /**
+     * 
+     * @return the OpenGL location of the texture sampler for use in the fragment shader.
+     */
+    public int getTextureLocation();
+
+    /**
      * Initialises the shader program for use by materials.
      * 
      * All OpenGL calls should be in this method to be called only by the main thread.

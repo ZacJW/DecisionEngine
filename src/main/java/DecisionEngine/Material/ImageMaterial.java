@@ -24,7 +24,7 @@ public class ImageMaterial implements Material {
     @Override
     public void enable(SimpleMatrix cameraTransform, SimpleMatrix globalTransform) {
         lwjgl.glUseProgram(shader.getShaderID());
-        lwjgl.glActiveTexture(0);
+        lwjgl.glActiveTexture(GL_TEXTURE0);
         lwjgl.glUniform1i(lwjgl.glGetUniformLocation(shader.getShaderID(), "inTexture"), 0);
         lwjgl.glUniformMatrix4fv(shader.getCameraTransformLocation(), true, cameraTransform.getFDRM().data);
         lwjgl.glUniformMatrix4fv(shader.getGlobalTransformLocation(), true, globalTransform.getFDRM().data);
@@ -34,7 +34,7 @@ public class ImageMaterial implements Material {
     @Override
     public void disable() {
         lwjgl.glUseProgram(0);
-        lwjgl.glActiveTexture(0);
+        lwjgl.glActiveTexture(GL_TEXTURE0);
         lwjgl.glBindTexture(GL_TEXTURE_2D, 0);
     }
     

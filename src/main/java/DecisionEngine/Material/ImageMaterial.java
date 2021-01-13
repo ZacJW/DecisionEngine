@@ -13,9 +13,9 @@ import org.ejml.simple.SimpleMatrix;
  */
 public class ImageMaterial implements Material {
 
-    Shader shader = Shader.getImageShader();
-    ImageTexture texture;
-    LWJGLInterface lwjgl;
+    protected Shader shader = Shader.getImageShader();
+    protected ImageTexture texture;
+    protected LWJGLInterface lwjgl;
     public ImageMaterial(LWJGLInterface lwjgl, ImageTexture texture){
         this.texture = texture;
         this.lwjgl = lwjgl;

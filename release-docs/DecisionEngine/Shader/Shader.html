@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":10,"i2":10,"i3":9,"i4":10,"i5":10};
+var data = {"i0":9,"i1":10,"i2":10,"i3":9,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -159,21 +159,23 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.io.File,java.io.File,java.lang.String,java.lang.String)">Shader</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.io.File,java.io.File,java.lang.String,java.lang.String,java.lang.String)">Shader</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html?is-external=true" title="class or interface in java.io" class="externalLink">File</a>&nbsp;vertexShaderFile,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html?is-external=true" title="class or interface in java.io" class="externalLink">File</a>&nbsp;fragmentShaderFile,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;cameraTransformName,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName)</code></th>
+      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName,
+      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;textureName)</code></th>
 <td class="colLast">
 <div class="block">Creates a Shader from files containing vertex shader source code and fragment shader source code.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">Shader</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">Shader</a></span>&#8203;(<a href="../LWJGLDelegate/LWJGLInterface.html" title="interface in DecisionEngine.LWJGLDelegate">LWJGLInterface</a>&nbsp;lwjgl,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;vertexShaderString,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;fragmentShaderString,
       <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;cameraTransformName,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName)</code></th>
+      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName,
+      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;textureName)</code></th>
 <td class="colLast">
 <div class="block">Creates a Shader from Strings containing vertex shader source code and fragment shader source code.</div>
 </td>
@@ -229,6 +231,11 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 </td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getTextureLocation()">getTextureLocation</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initialise()">initialise</a></span>()</code></th>
 <td class="colLast">
@@ -259,7 +266,7 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.io.File,java.io.File,java.lang.String,java.lang.String)">
+<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.io.File,java.io.File,java.lang.String,java.lang.String,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -269,7 +276,8 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html?is-external=true" title="class or interface in java.io" class="externalLink">File</a>&nbsp;vertexShaderFile,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/File.html?is-external=true" title="class or interface in java.io" class="externalLink">File</a>&nbsp;fragmentShaderFile,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;cameraTransformName,
-              <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName)
+              <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName,
+              <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;textureName)
        throws <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/FileNotFoundException.html?is-external=true" title="class or interface in java.io" class="externalLink">FileNotFoundException</a>,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/IOException.html?is-external=true" title="class or interface in java.io" class="externalLink">IOException</a></pre>
 <div class="block">Creates a Shader from files containing vertex shader source code and fragment shader source code.</div>
@@ -284,7 +292,7 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 </dl>
 </li>
 </ul>
-<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
+<a id="&lt;init&gt;(DecisionEngine.LWJGLDelegate.LWJGLInterface,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -294,7 +302,8 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;vertexShaderString,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;fragmentShaderString,
               <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;cameraTransformName,
-              <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName)</pre>
+              <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;globalTransformName,
+              <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;textureName)</pre>
 <div class="block">Creates a Shader from Strings containing vertex shader source code and fragment shader source code.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -401,7 +410,7 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <a id="getGlobalTransformLocation()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getGlobalTransformLocation</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;getGlobalTransformLocation()</pre>
@@ -410,6 +419,21 @@ implements <a href="ShaderInterface.html" title="interface in DecisionEngine.Sha
 <dd><code><a href="ShaderInterface.html#getGlobalTransformLocation()">getGlobalTransformLocation</a></code>&nbsp;in interface&nbsp;<code><a href="ShaderInterface.html" title="interface in DecisionEngine.Shader">ShaderInterface</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the OpenGL location of the global transformation matrix for use in the vertex shader.</dd>
+</dl>
+</li>
+</ul>
+<a id="getTextureLocation()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getTextureLocation</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getTextureLocation()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="ShaderInterface.html#getTextureLocation()">getTextureLocation</a></code>&nbsp;in interface&nbsp;<code><a href="ShaderInterface.html" title="interface in DecisionEngine.Shader">ShaderInterface</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the OpenGL location of the texture sampler for use in the fragment shader.</dd>
 </dl>
 </li>
 </ul>

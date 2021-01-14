@@ -35,6 +35,10 @@ public class OpenGLRenderer implements RendererInterface{
             throw new IllegalStateException("Unable to initialize GLFW");
         }
         lwjgl.glfwDefaultWindowHints();
+        lwjgl.glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+        lwjgl.glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+        lwjgl.glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        lwjgl.glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
         lwjgl.glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
         lwjgl.glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 

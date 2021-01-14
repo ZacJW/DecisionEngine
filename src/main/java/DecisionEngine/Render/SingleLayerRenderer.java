@@ -12,8 +12,14 @@ import DecisionEngine.LWJGLDelegate.LWJGLInterface;
  * A simple OpenGL renderer that only supports a single render layer
  */
 public class SingleLayerRenderer extends OpenGLRenderer {
-    CameraInterface camera;
-    WorldInterface world;
+    protected CameraInterface camera;
+    protected WorldInterface world;
+
+    /**
+     * The renderer's one and only render layer
+     */
+    protected RenderLayer layer = new RenderLayer();
+    
     public SingleLayerRenderer(LWJGLInterface lwjgl, CameraInterface camera){
         super(lwjgl);
         this.camera = camera;
@@ -23,10 +29,6 @@ public class SingleLayerRenderer extends OpenGLRenderer {
         this.world = world;
     }
 
-    /**
-     * The renderer's one and only render layer
-     */
-    RenderLayer layer = new RenderLayer();
 
     @Override
     public void renderAll(){

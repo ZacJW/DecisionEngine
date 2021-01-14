@@ -30,7 +30,7 @@ public class OpenGLRenderer implements RendererInterface{
         if (initialised){
             return;
         }
-        lwjgl.GLFWErrorCallbackCreatePrint(System.err);
+        lwjgl.glfwSetErrorCallback(lwjgl.GLFWErrorCallbackCreatePrint(System.err));
         if( !lwjgl.glfwInit()){
             throw new IllegalStateException("Unable to initialize GLFW");
         }

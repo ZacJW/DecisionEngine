@@ -21,12 +21,12 @@ public class SpriteObject extends GameObject implements Renderable {
         1, 2, 3
     };
     static final ByteBuffer EBO = BufferUtils.createByteBuffer(6).put(EBO_INDICIES);
-    Quad objectCoords;
-    Quad textureCoords;
-    int vao;
-    Material material;
-    LWJGLInterface lwjgl;
-    WorldInterface world;
+    protected Quad objectCoords;
+    protected Quad textureCoords;
+    protected int vao;
+    protected Material material;
+    protected LWJGLInterface lwjgl;
+    protected WorldInterface world;
     boolean initialised = false;
     public SpriteObject(LWJGLInterface lwjgl, WorldInterface world, Quad objectCoords, Quad textureCoords, Material material){
         super();

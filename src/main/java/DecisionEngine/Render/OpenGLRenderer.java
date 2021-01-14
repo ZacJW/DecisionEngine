@@ -6,6 +6,7 @@ import static org.lwjgl.system.MemoryUtil.*;
 import java.nio.IntBuffer;
 
 import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.system.MemoryStack;
 
 import DecisionEngine.LWJGLDelegate.LWJGLInterface;
@@ -19,6 +20,7 @@ public class OpenGLRenderer implements RendererInterface{
     int windowWidth;
     int windowHeight;
     protected LWJGLInterface lwjgl;
+    protected GLCapabilities glCapabilities;
 
     public OpenGLRenderer(LWJGLInterface lwjgl){
         this.lwjgl = lwjgl;
@@ -54,7 +56,7 @@ public class OpenGLRenderer implements RendererInterface{
             lwjgl.glfwMakeContextCurrent(window);
             lwjgl.glfwSwapInterval(1);
             lwjgl.glfwShowWindow(window);
-            lwjgl.GLCreateCapabilities();
+            glCapabilities = lwjgl.GLCreateCapabilities();
         }
 
         initialised = true;

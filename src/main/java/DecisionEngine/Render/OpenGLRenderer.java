@@ -15,10 +15,10 @@ import DecisionEngine.LWJGLDelegate.LWJGLInterface;
  * An OpenGL render with support for multiple render layers
  */
 public class OpenGLRenderer implements RendererInterface{
-    long window;
+    protected long window;
     boolean initialised = false;
-    int windowWidth;
-    int windowHeight;
+    protected int windowWidth;
+    protected int windowHeight;
     protected LWJGLInterface lwjgl;
     protected GLCapabilities glCapabilities;
 

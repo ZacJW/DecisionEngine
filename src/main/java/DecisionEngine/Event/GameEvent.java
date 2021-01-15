@@ -8,9 +8,9 @@ import DecisionEngine.Core.World;
 import DecisionEngine.GameObject.StateLinkInterface;
 
 public abstract class GameEvent implements GameEventInterface {
-    Set<StateLinkInterface> links = new HashSet<StateLinkInterface>();
-    Set<GameEventInterface> listeners = new HashSet<GameEventInterface>();
-    World world;
+    protected Set<StateLinkInterface> links = new HashSet<StateLinkInterface>();
+    protected Set<GameEventInterface> listeners = new HashSet<GameEventInterface>();
+    protected World world;
 
     public GameEvent(World world){
         this.world = world;

@@ -3,9 +3,9 @@ package DecisionEngine.GameObject;
 import DecisionEngine.Event.GameEventInterface;
 
 public class StateLink implements StateLinkInterface {
-    GameEventInterface event;
-    StateNodeInterface to;
-    StateNodeInterface from;
+    protected GameEventInterface event;
+    protected StateNodeInterface to;
+    protected StateNodeInterface from;
 
     public StateLink(StateNodeInterface to, StateNodeInterface from, GameEventInterface event) throws NullPointerException {
         if (to == null) {

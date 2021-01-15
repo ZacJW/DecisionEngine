@@ -3,7 +3,7 @@ package DecisionEngine.GameObject;
 import java.util.ArrayList;
 
 public class GameObject implements GameObjectInterface {
-    ArrayList<StateMapInterface> maps = new ArrayList<StateMapInterface>();
+    protected ArrayList<StateMapInterface> maps = new ArrayList<StateMapInterface>();
 
     public GameObject() {
 

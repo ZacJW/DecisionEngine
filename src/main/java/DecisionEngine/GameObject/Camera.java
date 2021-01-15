@@ -3,7 +3,7 @@ package DecisionEngine.GameObject;
 import org.ejml.simple.SimpleMatrix;
 
 public class Camera extends GameObject implements CameraInterface {
-    SimpleMatrix cameraTransform;
+    protected SimpleMatrix cameraTransform;
 
     public Camera(SimpleMatrix cameraTransform){
         super();

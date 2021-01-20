@@ -10,7 +10,9 @@ public interface WorldInterface {
 
     public void updatePosition(GameObjectInterface gameObject, SimpleMatrix position);
 
-    public SimpleMatrix getPosition(GameObjectInterface gameObject);
+    public SimpleMatrix getLocalPosition(GameObjectInterface gameObject);
+
+    public SimpleMatrix getGlobalPosition(GameObjectInterface gameObject);
 
     public void requestSpawn(GameObjectInterface gameObject, GameObjectInterface parent, SimpleMatrix position);
 

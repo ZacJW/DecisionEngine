@@ -52,8 +52,12 @@ public abstract class World implements WorldInterface {
         updatedPositions.add(data);
     }
 
-    public SimpleMatrix getPosition(GameObjectInterface gameObject){
+    public SimpleMatrix getGlobalPosition(GameObjectInterface gameObject){
         return gameObjects.get(gameObject).globalPosition.copy();
+    }
+
+    public SimpleMatrix getLocalPosition(GameObjectInterface gameObject){
+        return gameObjects.get(gameObject).position.copy();
     }
 
     public EventCaptureInterface getEventCapture(){

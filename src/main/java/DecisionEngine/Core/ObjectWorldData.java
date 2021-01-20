@@ -3,23 +3,18 @@ package DecisionEngine.Core;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.ejml.data.FMatrixRMaj;
 import org.ejml.data.MatrixType;
 import org.ejml.simple.SimpleMatrix;
 
 class ObjectWorldData {
-    private static final float[][] defaultPosition = {
-        {0.0f, 0.0f, 0.0f, 0.0f},
-        {0.0f, 0.0f, 0.0f, 0.0f},
-        {0.0f, 0.0f, 0.0f, 0.0f},
-        {0.0f, 0.0f, 0.0f, 1.0f},
-    };
     ObjectWorldData parent;
     Set<ObjectWorldData> children = new HashSet<ObjectWorldData>();
-    SimpleMatrix globalPosition = new SimpleMatrix(defaultPosition);
+    SimpleMatrix globalPosition = SimpleMatrix.identity(4, FMatrixRMaj.class);
     SimpleMatrix position;
 
     ObjectWorldData(){
-        position = new SimpleMatrix(defaultPosition);
+        position = SimpleMatrix.identity(4, FMatrixRMaj.class);
     }
 
     ObjectWorldData(SimpleMatrix position){

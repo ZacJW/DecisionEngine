@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.Collections;
 
 import org.ejml.data.FMatrixRMaj;
 import org.ejml.simple.SimpleMatrix;
@@ -19,11 +20,11 @@ import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 import DecisionEngine.Render.RendererInterface;
 
 public abstract class World implements WorldInterface {
-    Map<GameObjectInterface, ObjectWorldData> gameObjects;
-    EventCaptureInterface uncheckedEvents;
-    StateUpdateInterface pendingStates;
-    PositionUpdate updatedPositions = new PositionUpdate();
-    Map<GameObjectInterface, ObjectWorldData> spawningObjects = new HashMap<GameObjectInterface, ObjectWorldData>();
+    volatile Map<GameObjectInterface, ObjectWorldData> gameObjects;
+    volatile EventCaptureInterface uncheckedEvents;
+    volatile StateUpdateInterface pendingStates;
+    volatile PositionUpdate updatedPositions = new PositionUpdate();
+    volatile Map<GameObjectInterface, ObjectWorldData> spawningObjects = Collections.synchronizedMap(new HashMap<GameObjectInterface, ObjectWorldData>());
     Input input;
     RendererInterface renderer;
     LWJGLInterface lwjgl;

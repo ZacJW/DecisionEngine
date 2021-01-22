@@ -9,6 +9,8 @@ import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GLCapabilities;
 import org.lwjgl.system.MemoryStack;
 
+import static org.lwjgl.opengl.GL33C.GL_DEPTH_TEST;
+
 import DecisionEngine.LWJGLDelegate.LWJGLInterface;
 
 /**
@@ -62,6 +64,7 @@ public class OpenGLRenderer implements RendererInterface{
             lwjgl.glfwShowWindow(window);
             glCapabilities = lwjgl.GLCreateCapabilities();
         }
+        lwjgl.glEnable(GL_DEPTH_TEST);
 
         initialised = true;
     }

@@ -65,7 +65,6 @@ public abstract class World implements WorldInterface {
     }
 
     public void processBehaviours(){
-        uncheckedEvents.reset();
         ExecutorService pool = Executors.newCachedThreadPool();
         for (Entry<GameObjectInterface, ObjectWorldData> entry : gameObjects.entrySet()){
             pool.execute(entry.getKey());
@@ -89,6 +88,7 @@ public abstract class World implements WorldInterface {
         }catch (InterruptedException e){
 
         }
+        uncheckedEvents.reset();
     }
 
     public void updateStates(){
@@ -102,6 +102,7 @@ public abstract class World implements WorldInterface {
         }catch (InterruptedException e){
 
         }
+        pendingStates.reset();
     }
 
     public void spawnObjects(){

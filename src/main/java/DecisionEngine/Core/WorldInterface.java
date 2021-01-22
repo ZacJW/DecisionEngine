@@ -27,4 +27,6 @@ public interface WorldInterface {
     public void processEvents();
 
     public void updateStates();
+
+    public void processInput();
 }

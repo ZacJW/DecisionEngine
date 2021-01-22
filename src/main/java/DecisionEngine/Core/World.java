@@ -220,4 +220,8 @@ public abstract class World implements WorldInterface {
     public RendererInterface getRenderer(){
         return renderer;
     }
+
+    public void processInput(){
+        input.processInput();
+    }
 }

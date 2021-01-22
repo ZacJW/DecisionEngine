@@ -41,6 +41,7 @@ public interface LWJGLInterface {
     public GLFWCursorPosCallback glfwSetCursorPosCallback(long window, GLFWCursorPosCallbackI cbfun);
     public GLFWMouseButtonCallback glfwSetMouseButtonCallback(long window, GLFWMouseButtonCallbackI cbfun);
     public void glfwGetCursorPos(long window, DoubleBuffer xpos, DoubleBuffer ypos);
+    public void glEnable(int target);
     
     public GLCapabilities GLCreateCapabilities();
     

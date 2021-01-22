@@ -355,5 +355,11 @@ public class LWJGLDummy implements LWJGLInterface {
         // TODO Auto-generated method stub
 
     }
+
+    @Override
+    public void glEnable(int target) {
+        // TODO Auto-generated method stub
+
+    }
     
 }

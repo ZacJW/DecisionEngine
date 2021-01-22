@@ -309,4 +309,9 @@ public class LWJGLDelegate implements LWJGLInterface {
     public void glfwGetCursorPos(long window, DoubleBuffer xpos, DoubleBuffer ypos) {
         GLFW.glfwGetCursorPos(window, xpos, ypos);
     }
+
+    @Override
+    public void glEnable(int target) {
+        GL33C.glEnable(target);
+    }
 }
